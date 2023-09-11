@@ -6,3 +6,4 @@ slurm-*.out
 stdeo.*
 .mpiauto*
 .D*
+a.out
