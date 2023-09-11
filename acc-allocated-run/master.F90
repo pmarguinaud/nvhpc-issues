@@ -34,8 +34,6 @@ ENDDO
 !$acc update device (YD%YRVERT_GEOM%YRVETA%VETAH)
 !$acc enter data attach (YD%YRVERT_GEOM%YRVETA%VETAH)
 
-!$acc enter data attach (YD%YRVETA)
-
 !$acc enter data create (YD%YRVETA)
 !$acc update device (YD%YRVETA)
 
