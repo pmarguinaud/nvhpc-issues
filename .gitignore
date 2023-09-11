@@ -1,0 +1,8 @@
+*.o
+*.mod
+*.x
+*.lst
+slurm-*.out
+stdeo.*
+.mpiauto*
+.D*
