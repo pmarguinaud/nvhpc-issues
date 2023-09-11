@@ -1,0 +1,56 @@
+ABSTRACT INTERFACE 
+SUBROUTINE FUN_T (P, N)
+!$acc routine (TOTO) seq
+INTEGER :: N
+REAL*8 :: P (N)
+END SUBROUTINE
+END INTERFACE
+
+INTERFACE
+SUBROUTINE TOTO (P, N)
+!$acc routine (TOTO) seq
+INTEGER :: N
+REAL*8 :: P (N)
+END SUBROUTINE
+END INTERFACE
+
+
+REAL*8, ALLOCATABLE :: X (:)
+INTEGER :: N
+PROCEDURE (FUN_T), POINTER :: FUN
+
+N = 10
+
+ALLOCATE (X (N))
+
+X = 3.14
+
+FUN => TOTO
+
+CALL FUN (X, N)
+
+!$acc serial copyin (X)
+FUN => TOTO
+PRINT *, "CALL TOTO"
+CALL TOTO (X, N)
+!PRINT *, "CALL FUN"
+!CALL FUN (X, N)
+!$acc end serial
+
+END
+
+SUBROUTINE TOTO (P, N)
+
+!$acc routine (TOTO) seq
+
+INTEGER :: N
+REAL*8 :: P (N)
+INTEGER :: I
+
+PRINT *, N
+DO I = 1, N
+  PRINT *, I, P (I)
+ENDDO
+
+END SUBROUTINE
+

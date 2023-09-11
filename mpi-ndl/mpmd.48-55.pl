@@ -1,0 +1,1 @@
+$VAR1 = {'args' => [],'bin' => './mpitest.x','distribution' => 'block','mpi-allow-odd-dist' => 0,'nn' => '1','nnp' => '8','np' => 8,'openmp' => '16','proc' => 'Rome-2x64'};

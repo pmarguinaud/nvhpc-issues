@@ -1,0 +1,5 @@
+ &NAMRIP
+   TSTEP=50.,
+   CSTOP='h1',
+ /
+
