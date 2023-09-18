@@ -1,0 +1,529 @@
++ pgf90 -o main.0.x -DFFF=0 -mp -fPIC -Minfo -gopt -Mlarge_arrays -Mlist -traceback -Mnofma -Mbyteswapio -Mbackslash -Mstack_arrays -acc=gpu -O1 -gopt -gpu=cc70,cc80 -Minfo=accel,all,intensity,ccff main.F90 toto.F90
+main.F90:
+MAIN:
+     27, Generating enter data create(x(:,:,:))
+     35, Generating present(x(:,:,:))
+         Generating implicit firstprivate(kgpblks,klev,klon)
+         Accelerator serial kernel generated
+         Generating NVIDIA GPU code
+         36, !$acc do seq
+     36, Copy in and copy out of x in call to toto
+toto.F90:
+toto:
+      1, Generating acc routine seq
+         Generating NVIDIA GPU code
+++ seq 100
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58051 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58062 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58118 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58185 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58344 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58356 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58401 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58435 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58491 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58514 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58559 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58592 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58737 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58748 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58760 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58782 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58816 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58873 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58907 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 58964 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 59042 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 59087 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 59122 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 59179 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 59190 Segmentation fault      ./main.$FFF.x 32 70 1500
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
++ for i in '$(seq 100)'
++ ./main.0.x 32 70 1500
+./main.sh: line 19: 59212 Segmentation fault      ./main.$FFF.x 32 70 1500
