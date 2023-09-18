@@ -1,0 +1,9 @@
+SUBROUTINE TOTO (KLON, KLEV, P)
+
+!$acc routine (TOTO) seq
+
+INTEGER :: KLON, KLEV
+REAL :: P (KLON, KLEV)
+
+END SUBROUTINE
+

@@ -1,0 +1,43 @@
++ for FFF in 1 0
++ pgf90 -o main.1.x -DFFF=1 -mp -fPIC -Minfo -gopt -Mlarge_arrays -Mlist -traceback -Mnofma -Mbyteswapio -Mbackslash -Mstack_arrays -acc=gpu -O1 -gopt -gpu=cc70,cc80 -Minfo=accel,all,intensity,ccff main.F90 toto.F90
+main.F90:
+MAIN:
+     27, Generating enter data create(x(:,:,:))
+     30, Generating present(x(:,:,:))
+         Generating implicit firstprivate(kgpblks,klev,klon)
+         Accelerator serial kernel generated
+         Generating NVIDIA GPU code
+     31, Possible copy in and copy out of x in call to toto
+     35, Generating present(x(:,:,:))
+         Generating implicit firstprivate(kgpblks,klon,klev)
+         Accelerator serial kernel generated
+         Generating NVIDIA GPU code
+         36, !$acc do seq
+     36, Copy in and copy out of x in call to toto
+toto.F90:
+toto:
+      1, Generating acc routine seq
+         Generating NVIDIA GPU code
++ ./main.1.x 32 70 1500
++ for FFF in 1 0
++ pgf90 -o main.0.x -DFFF=0 -mp -fPIC -Minfo -gopt -Mlarge_arrays -Mlist -traceback -Mnofma -Mbyteswapio -Mbackslash -Mstack_arrays -acc=gpu -O1 -gopt -gpu=cc70,cc80 -Minfo=accel,all,intensity,ccff main.F90 toto.F90
+main.F90:
+MAIN:
+     27, Generating enter data create(x(:,:,:))
+     35, Generating present(x(:,:,:))
+         Generating implicit firstprivate(kgpblks,klev,klon)
+         Accelerator serial kernel generated
+         Generating NVIDIA GPU code
+         36, !$acc do seq
+     36, Copy in and copy out of x in call to toto
+toto.F90:
+toto:
+      1, Generating acc routine seq
+         Generating NVIDIA GPU code
++ ./main.0.x 32 70 1500
+Failing in Thread:1
+Accelerator Fatal Error: call to cuMemcpy2DAsync returned error 1: Invalid value
+ File: /home/gmap/mrpm/marguina/nvhpc-issues/acc-bounds/main.F90
+ Function: MAIN:1
+ Line: 37
+
