@@ -3,9 +3,13 @@
 module load nvhpc/23.11
 
 set -x
+set -e
+
 
 for FC in gfortran pgf90
 do
+
+rm -f *.x *.o *.mod
 
 $FC -c parkind1.F90
 $FC -c field_basic_module.F90
