@@ -1,6 +1,6 @@
 #!/bin/bash
 
-module load nvhpc/23.11
+module load nvhpc/24.1
 
 set -x
 pgf90 -c abstract_ice.F90
