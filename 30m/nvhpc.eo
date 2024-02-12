@@ -1,0 +1,4 @@
++ /usr/bin/time -p pgf90 -c -O0 surface_views_prognostic_module.F90
+real 1542.85
+user 1526.39
+sys 7.56

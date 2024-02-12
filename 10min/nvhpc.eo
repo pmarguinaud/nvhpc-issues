@@ -1,0 +1,4 @@
++ /usr/bin/time -p pgf90 -O0 -c util_cpg_surf_vdd_opts_type_mod.F90
+real 593.50
+user 416.10
+sys 110.79
