@@ -7,3 +7,5 @@ stdeo.*
 .mpiauto*
 .D*
 a.out
+*.so
+*.a
