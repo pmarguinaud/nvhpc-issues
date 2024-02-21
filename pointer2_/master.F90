@@ -1,0 +1,37 @@
+PROGRAM MASTER
+
+IMPLICIT NONE
+
+TYPE FIELD_3D
+  REAL*8, POINTER :: PTR(:,:,:) => NULL()
+  INTEGER*4 :: LBOUNDS (3) = [1, 1, 1]
+END TYPE FIELD_3D
+
+TYPE :: VARIABLE_3D
+  REAL*8, POINTER :: T0(:,:) => NULL()  
+  TYPE(FIELD_3D) :: FT0 
+END TYPE VARIABLE_3D
+
+TYPE(VARIABLE_3D) :: YLV
+REAL*8, ALLOCATABLE, TARGET :: ZGMV (:,:,:,:)
+REAL*8, POINTER :: ZZ (:,:), WW (:,:)
+
+
+ALLOCATE (ZGMV (1784, 15, 16, 1))
+ZGMV (:,:,7,:) = 273.15
+
+YLV%FT0%PTR => ZGMV(:,:,7,:)
+
+YLV%T0 (YLV%FT0%LBOUNDS(1):, YLV%FT0%LBOUNDS(2):) => YLV%FT0%PTR(:,:,1)
+
+WW => YLV%T0
+
+ZZ (1:,1:) => WW (1:,1:)
+
+WRITE (*, *) __FILE__, ':', __LINE__, LOC (YLV%T0 (1, 1)) == LOC (ZZ (1, 1))
+WRITE (0, *) __FILE__, ':', __LINE__, YLV%T0 (1, 1), ZZ (1, 1)
+
+
+STOP
+
+END 
