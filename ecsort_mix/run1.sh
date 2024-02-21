@@ -11,7 +11,7 @@ FC=pgf90
 \rm -f libfiat*
 
 $FC -fPIC -gopt -acc=gpu -O1 -gopt -gpu=cc70 -fPIC -c ecsort_mix.F90 
-$FC -fPIC -fPIC -gopt -acc=gpu -O1 -gopt -gpu=cc70 -shared -o libfiat.so ecsort_mix.o 
+$FC -fPIC -gopt -acc=gpu -O1 -gopt -gpu=cc70 -shared -o libfiat.so ecsort_mix.o 
 $FC -acc=gpu -O1 -gopt -gpu=cc70 eloc.F90 -L. -lfiat
 
 \rm -f libfiat.so
