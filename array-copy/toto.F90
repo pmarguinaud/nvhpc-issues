@@ -4,26 +4,22 @@ IMPLICIT NONE
 
 #include "larcinb1.intfb.h"
 
-TYPE FIELD_4RB_ARRAY
-  REAL (KIND=8), POINTER :: P (:,:,:)
-END TYPE
+REAL (KIND=8), POINTER :: P (:,:,:)
 
-TYPE(FIELD_4RB_ARRAY)  :: YLA_PLSCAW1
-
-REAL(KIND=8), TARGET :: ZLSCAW1(1784,15,12,1)
+REAL(KIND=8), TARGET :: ZLSCAW1(10,15,12,1)
 
 WRITE (0, *) __FILE__, ':', __LINE__, " LOC (ZLSCAW1(1,1,1,1)) = ", LOC (ZLSCAW1(1,1,1,1))
 
-YLA_PLSCAW1%P => ZLSCAW1 (:,:,:,1)
+P => ZLSCAW1 (:,:,:,1)
 
-WRITE (0, *) __FILE__, ':', __LINE__, " LOC (YLA_PLSCAW1%P(1,1,1) = ", LOC (YLA_PLSCAW1%P(1,1,1))
+WRITE (0, *) __FILE__, ':', __LINE__, " LOC (P(1,1,1) = ", LOC (P(1,1,1))
 
-CALL LARCINB1(YLA_PLSCAW1%P)
+CALL LARCINB1(P)
 
-YLA_PLSCAW1%P (1:,1:,1:) => ZLSCAW1 (:,:,:,1)
+P (1:,1:,1:) => ZLSCAW1 (:,:,:,1)
 
-WRITE (0, *) __FILE__, ':', __LINE__, " LOC (YLA_PLSCAW1%P(1,1,1) = ", LOC (YLA_PLSCAW1%P(1,1,1))
+WRITE (0, *) __FILE__, ':', __LINE__, " LOC (P(1,1,1) = ", LOC (P(1,1,1))
 
-CALL LARCINB1(YLA_PLSCAW1%P)
+CALL LARCINB1(P)
 
 END 
