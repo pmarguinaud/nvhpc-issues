@@ -1,0 +1,14 @@
+SUBROUTINE LARCINB1(PLSCAW, PRSCAW)
+
+IMPLICIT NONE
+
+REAL(KIND=8)               ,INTENT(IN)     :: PLSCAW(1784,15,12)
+REAL(KIND=8)               ,INTENT(IN)     :: PRSCAW(1784,15,36)
+
+WRITE (0, *) __FILE__, ':', __LINE__, " LOC (PLSCAW (1,1,1)) = ", LOC (PLSCAW (1,1,1))
+WRITE (0, *) __FILE__, ':', __LINE__, " LOC (PRSCAW (1,1,1)) = ", LOC (PRSCAW (1,1,1))
+
+WRITE (0, *) __FILE__, ':', __LINE__; CALL FLUSH (0)
+
+END SUBROUTINE LARCINB1
+
