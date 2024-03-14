@@ -1,0 +1,14 @@
+SUBROUTINE LARCINB1(PLSCAW)
+
+!$acc routine (LARCINB1) seq
+
+IMPLICIT NONE
+
+REAL(KIND=8)               ,INTENT(IN)     :: PLSCAW(1784,15,12)
+
+PRINT *, __FILE__, ':', __LINE__, " LOC (PLSCAW (1,1,1)) = ", LOC (PLSCAW (1,1,1))
+
+PRINT *, __FILE__, ':', __LINE__
+
+END SUBROUTINE LARCINB1
+
