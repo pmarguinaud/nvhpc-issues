@@ -1,0 +1,5 @@
+PROGRAM MAIN
+
+USE A, ONLY : S
+
+END 
