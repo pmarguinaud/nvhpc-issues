@@ -1,0 +1,37 @@
+PROGRAM MAIN
+
+IMPLICIT NONE
+
+INTEGER, PARAMETER :: NPROMA = 32, NFLEVG = 15, NGPBLKS = 10
+
+REAL, POINTER :: ZL (:, :, :), ZR (:, :, :)
+
+INTEGER :: JLON, JLEV, JBLK
+
+ALLOCATE (ZL (NPROMA, NFLEVG, NGPBLKS), ZR (NPROMA, NFLEVG, NGPBLKS))
+
+!$acc data create (ZL, ZR)
+
+!$acc parallel loop gang present (ZL, ZR)
+DO JBLK = 1, NGPBLKS
+  DO JLON = 1, NPROMA
+    CALL ACPY_R8_1D (JLON, ZL (:,:,JBLK), ZR (:,:,JBLK))
+  ENDDO
+ENDDO
+
+!$acc end data
+
+CONTAINS
+
+SUBROUTINE ACPY_R8_1D (JLON, PL, PR) 
+
+!$acc routine (ACPY_R8_1D) seq
+
+REAL :: PL (:,:), PR (:,:) 
+INTEGER :: JLON
+
+PL (JLON,:) = PR (JLON,:)
+
+END SUBROUTINE
+
+END
