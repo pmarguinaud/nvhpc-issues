@@ -2,7 +2,7 @@
 
 module load nvhpc/24.3
 
-fflags="-mp -fPIC -Minfo -gopt -Mlarge_arrays -Mlist -traceback -Mnofma -Mbyteswapio -Mbackslash -Mstack_arrays -cuda -acc=gpu -O1 -gopt -gpu=cc70,cc80 -Minfo=accel,all,ccff"
+fflags="-mp -Mlarge_arrays -Mstack_arrays -O1"
 f90=pgf90
 
 for f in *.F90
@@ -10,7 +10,7 @@ do
   $f90 -c $fflags $f
 done
 
-$f90 -cuda -acc=gpu -O1 -gopt -gpu=cc70,cc80 -v -lrt -lstdc++  -o main.x *.o
+$f90 -o main.x *.o
 
 for i in 0 1
 do
