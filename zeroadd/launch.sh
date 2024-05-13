@@ -1,5 +1,6 @@
 #!/bin/bash
 
+module unload nvhpc
 module load intel
 module load nvhpc
 
