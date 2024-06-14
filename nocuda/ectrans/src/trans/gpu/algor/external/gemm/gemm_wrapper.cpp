@@ -17,8 +17,6 @@
 #include "cublas_v2.h"
 #include "cutlass/gemm/device/gemm.h"
 
-#include "../growing_allocator.h"
-
 constexpr bool use_cutlass = false;
 
 #define CUDA_CHECK(e)                                                          \
@@ -84,8 +82,6 @@ void run_group_graph2(Gemm &&gemm, int const m, int const *n, int const *k,
                      Real *C, int ldc, int const *offsetsC, int batchCount,
                      cudaStream_t stream, int blas_id,
                      void *growing_allocator) {
-  growing_allocator_register_free_c(growing_allocator,
-                                    free_gemm_cache<Gemm, Real>);
 
   // we store at most one graph per "m" (# fields) and "blas id"
   auto &graphCache = get_graph_cache<Gemm, Real>();
