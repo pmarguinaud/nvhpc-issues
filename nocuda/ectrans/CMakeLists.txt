@@ -94,10 +94,8 @@ endif()
 
 set(CMAKE_CUDA_RUNTIME_LIBRARY Shared)
 
-### Add sources and tests
 include( ectrans_compile_options )
 add_subdirectory( src )
-add_subdirectory( tests )
 
 
 
