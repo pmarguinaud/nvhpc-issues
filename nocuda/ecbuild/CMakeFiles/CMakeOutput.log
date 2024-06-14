@@ -1,0 +1,198 @@
+The system is: Linux - 3.10.0-1160.102.1.el7.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /opt/softs/gcc/9.2.0/bin/gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/gmap/mrpm/marguina/field_api/ecbuild/CMakeFiles/3.24.1/CompilerIdC/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/gmap/mrpm/marguina/field_api/ecbuild/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_eda03/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_eda03.dir/build.make CMakeFiles/cmTC_eda03.dir/build
+gmake[1]: Entering directory `/home/gmap/mrpm/marguina/field_api/ecbuild/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o
+/opt/softs/gcc/9.2.0/bin/gcc   -v -o CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -c /opt/softs/libraries/ICC_2018.5.274/cmake-3.24.1/share/cmake-3.24/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/opt/softs/gcc/9.2.0/bin/gcc
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/opt/softs/gcc/9.2.0 --with-system-zlib --disable-multilib --enable-languages=c,c++,fortran
+Thread model: posix
+gcc version 9.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ /opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/cc1 -quiet -v /opt/softs/libraries/ICC_2018.5.274/cmake-3.24.1/share/cmake-3.24/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -version -o /scratch/utmp/marguina/cc6VBykK.s
+GNU C17 (GCC) version 9.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 9.2.0, GMP version 6.0.0, MPFR version 3.1.1, MPC version 1.0.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../x86_64-pc-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include
+ /usr/local/include
+ /opt/softs/gcc/9.2.0/include
+ /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed
+ /usr/include
+End of search list.
+GNU C17 (GCC) version 9.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 9.2.0, GMP version 6.0.0, MPFR version 3.1.1, MPC version 1.0.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: a8061942da699ed9fb40aaef99954024
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o /scratch/utmp/marguina/cc6VBykK.s
+GNU assembler version 2.27 (x86_64-redhat-linux) using BFD version version 2.27-44.base.el7_9.1
+COMPILER_PATH=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/opt/softs/gcc/9.2.0/lib64/../lib64/:/opt/softs/gcc/9.2.0/lib/../lib64/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/softs/gcc/9.2.0/lib64/:/opt/softs/gcc/9.2.0/lib/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+Linking C executable cmTC_eda03
+/opt/softs/libraries/ICC_2018.5.274/cmake-3.24.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eda03.dir/link.txt --verbose=1
+/opt/softs/gcc/9.2.0/bin/gcc  -v CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -o cmTC_eda03 
+Using built-in specs.
+COLLECT_GCC=/opt/softs/gcc/9.2.0/bin/gcc
+COLLECT_LTO_WRAPPER=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/opt/softs/gcc/9.2.0 --with-system-zlib --disable-multilib --enable-languages=c,c++,fortran
+Thread model: posix
+gcc version 9.2.0 (GCC) 
+COMPILER_PATH=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/opt/softs/gcc/9.2.0/lib64/../lib64/:/opt/softs/gcc/9.2.0/lib/../lib64/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/softs/gcc/9.2.0/lib64/:/opt/softs/gcc/9.2.0/lib/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_eda03' '-mtune=generic' '-march=x86-64'
+ /opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/collect2 -plugin /opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/liblto_plugin.so -plugin-opt=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/lto-wrapper -plugin-opt=-fresolution=/scratch/utmp/marguina/ccS1jNoR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_eda03 /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtbegin.o -L/opt/softs/gcc/9.2.0/lib64/../lib64 -L/opt/softs/gcc/9.2.0/lib/../lib64 -L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0 -L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/softs/gcc/9.2.0/lib64 -L/opt/softs/gcc/9.2.0/lib -L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../.. CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_eda03' '-mtune=generic' '-march=x86-64'
+gmake[1]: Leaving directory `/home/gmap/mrpm/marguina/field_api/ecbuild/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include]
+    add: [/usr/local/include]
+    add: [/opt/softs/gcc/9.2.0/include]
+    add: [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include] ==> [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/opt/softs/gcc/9.2.0/include] ==> [/opt/softs/gcc/9.2.0/include]
+  collapse include dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed] ==> [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include;/usr/local/include;/opt/softs/gcc/9.2.0/include;/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/gmap/mrpm/marguina/field_api/ecbuild/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_eda03/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_eda03.dir/build.make CMakeFiles/cmTC_eda03.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/gmap/mrpm/marguina/field_api/ecbuild/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/opt/softs/gcc/9.2.0/bin/gcc   -v -o CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -c /opt/softs/libraries/ICC_2018.5.274/cmake-3.24.1/share/cmake-3.24/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/softs/gcc/9.2.0/bin/gcc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/opt/softs/gcc/9.2.0 --with-system-zlib --disable-multilib --enable-languages=c c++ fortran]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 9.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/cc1 -quiet -v /opt/softs/libraries/ICC_2018.5.274/cmake-3.24.1/share/cmake-3.24/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -version -o /scratch/utmp/marguina/cc6VBykK.s]
+  ignore line: [GNU C17 (GCC) version 9.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.2.0  GMP version 6.0.0  MPFR version 3.1.1  MPC version 1.0.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /opt/softs/gcc/9.2.0/include]
+  ignore line: [ /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 9.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.2.0  GMP version 6.0.0  MPFR version 3.1.1  MPC version 1.0.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: a8061942da699ed9fb40aaef99954024]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o /scratch/utmp/marguina/cc6VBykK.s]
+  ignore line: [GNU assembler version 2.27 (x86_64-redhat-linux) using BFD version version 2.27-44.base.el7_9.1]
+  ignore line: [COMPILER_PATH=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/opt/softs/gcc/9.2.0/lib64/../lib64/:/opt/softs/gcc/9.2.0/lib/../lib64/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/softs/gcc/9.2.0/lib64/:/opt/softs/gcc/9.2.0/lib/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking C executable cmTC_eda03]
+  ignore line: [/opt/softs/libraries/ICC_2018.5.274/cmake-3.24.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eda03.dir/link.txt --verbose=1]
+  ignore line: [/opt/softs/gcc/9.2.0/bin/gcc  -v CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -o cmTC_eda03 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/softs/gcc/9.2.0/bin/gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/opt/softs/gcc/9.2.0 --with-system-zlib --disable-multilib --enable-languages=c c++ fortran]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 9.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/opt/softs/gcc/9.2.0/lib64/../lib64/:/opt/softs/gcc/9.2.0/lib/../lib64/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/softs/gcc/9.2.0/lib64/:/opt/softs/gcc/9.2.0/lib/:/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_eda03' '-mtune=generic' '-march=x86-64']
+  link line: [ /opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/collect2 -plugin /opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/liblto_plugin.so -plugin-opt=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/lto-wrapper -plugin-opt=-fresolution=/scratch/utmp/marguina/ccS1jNoR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_eda03 /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtbegin.o -L/opt/softs/gcc/9.2.0/lib64/../lib64 -L/opt/softs/gcc/9.2.0/lib/../lib64 -L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0 -L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/softs/gcc/9.2.0/lib64 -L/opt/softs/gcc/9.2.0/lib -L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../.. CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtend.o /lib/../lib64/crtn.o]
+    arg [/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/opt/softs/gcc/9.2.0/libexec/gcc/x86_64-pc-linux-gnu/9.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/scratch/utmp/marguina/ccS1jNoR.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_eda03] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtbegin.o] ==> obj [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtbegin.o]
+    arg [-L/opt/softs/gcc/9.2.0/lib64/../lib64] ==> dir [/opt/softs/gcc/9.2.0/lib64/../lib64]
+    arg [-L/opt/softs/gcc/9.2.0/lib/../lib64] ==> dir [/opt/softs/gcc/9.2.0/lib/../lib64]
+    arg [-L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0] ==> dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0]
+    arg [-L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64] ==> dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/opt/softs/gcc/9.2.0/lib64] ==> dir [/opt/softs/gcc/9.2.0/lib64]
+    arg [-L/opt/softs/gcc/9.2.0/lib] ==> dir [/opt/softs/gcc/9.2.0/lib]
+    arg [-L/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../..] ==> dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../..]
+    arg [CMakeFiles/cmTC_eda03.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtend.o] ==> obj [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib64/../lib64] ==> [/opt/softs/gcc/9.2.0/lib64]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib/../lib64] ==> [/opt/softs/gcc/9.2.0/lib64]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0] ==> [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../lib64] ==> [/opt/softs/gcc/9.2.0/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib64] ==> [/opt/softs/gcc/9.2.0/lib64]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib] ==> [/opt/softs/gcc/9.2.0/lib]
+  collapse library dir [/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../..] ==> [/opt/softs/gcc/9.2.0/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtbegin.o;/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/opt/softs/gcc/9.2.0/lib64;/opt/softs/gcc/9.2.0/lib/gcc/x86_64-pc-linux-gnu/9.2.0;/lib64;/usr/lib64;/opt/softs/gcc/9.2.0/lib]
+  implicit fwks: []
+
+
