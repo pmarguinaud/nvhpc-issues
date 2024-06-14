@@ -13,7 +13,7 @@ cmake_minimum_required( VERSION 3.18 FATAL_ERROR )
 
 find_package( ecbuild 3.4 REQUIRED HINTS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../ecbuild )
 
-project( ectrans LANGUAGES C CXX Fortran )
+project( ectrans LANGUAGES C CXX Fortran VERSION 1)
 include( ectrans_macros )
 
 set(CMAKE_CXX_STANDARD 17)
