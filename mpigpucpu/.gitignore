@@ -1,0 +1,11 @@
+*.x
+*.mod
+*.o
+slurm-*.out
+.mpiautotimeout.*.lock
+linux_bind.txt
+meminfo.txt
+stdeo.*
+fixpgienv.sh
+.mpiauto.machinefile*
+lacc=*.stdeo.*
