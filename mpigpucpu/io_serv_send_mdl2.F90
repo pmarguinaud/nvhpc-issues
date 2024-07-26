@@ -1,0 +1,34 @@
+SUBROUTINE IO_SERV_SEND_MDL2 (PSEND)
+
+USE MPL_SEND_MOD
+
+IMPLICIT NONE
+
+#include "mpif.h"
+
+REAL(KIND=8),    POINTER                  :: PSEND(:)
+
+INTEGER :: IREQUEST, IERR, ISTATUS (MPI_STATUS_SIZE)
+
+WRITE (0, '(" PSEND (1:10) = ",10F12.4)') PSEND (1:10)
+
+!$acc enter data create (PSEND)
+
+!$acc update device (PSEND)
+
+PSEND = 99999.
+
+!$acc host_data use_device (PSEND)
+
+CALL MPL_SEND_REAL8_DEVICE (PSEND, IREQUEST)
+
+!CALL MPI_ISEND (PSEND, SIZE (PSEND), MPI_REAL8, 1, 1, MPI_COMM_WORLD, IREQUEST, IERR)
+
+!$acc end host_data
+
+CALL MPI_WAIT (IREQUEST, ISTATUS, IERR)
+
+WRITE (0, *) " WAIT ERROR = ", IERR
+
+END 
+
