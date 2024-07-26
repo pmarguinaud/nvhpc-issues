@@ -10,22 +10,25 @@ REAL(KIND=8),  POINTER  :: PSEND(:)
 INTEGER :: KARG
 
 INTEGER :: IREQUEST, IERR, ISTATUS (MPI_STATUS_SIZE)
+REAL(KIND=8),  POINTER  :: ZSEND(:)
 
-WRITE (0, '(" PSEND (1:10) = ",10F12.4)') PSEND (1:10)
+ZSEND => PSEND
 
-!$acc enter data create (PSEND)
+WRITE (0, '(" ZSEND (1:10) = ",10F12.4)') ZSEND (1:10)
 
-!$acc update device (PSEND)
+!$acc enter data create (ZSEND)
 
-PSEND = 99999.
+!$acc update device (ZSEND)
+
+ZSEND = 99999.
 
 IF (KARG == 0) THEN
-!$acc host_data use_device (PSEND)
-  CALL MPL_SEND_REAL8_DEVICE (PSEND, IREQUEST)
+!$acc host_data use_device (ZSEND)
+  CALL MPL_SEND_REAL8_DEVICE (ZSEND, IREQUEST)
 !$acc end host_data
 ELSE
-!$acc host_data use_device (PSEND)
-  CALL MPI_ISEND (PSEND, SIZE (PSEND), MPI_REAL8, 1, 1, MPI_COMM_WORLD, IREQUEST, IERR)
+!$acc host_data use_device (ZSEND)
+  CALL MPI_ISEND (ZSEND, SIZE (ZSEND), MPI_REAL8, 1, 1, MPI_COMM_WORLD, IREQUEST, IERR)
   WRITE (0, *) " SEND ERROR = ", IERR
 !$acc end host_data
 ENDIF
