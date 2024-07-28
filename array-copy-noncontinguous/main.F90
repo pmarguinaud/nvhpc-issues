@@ -1,0 +1,23 @@
+REAL*8, ALLOCATABLE, TARGET :: X (:,:)
+REAL*8, POINTER :: PTR (:)
+
+ALLOCATE (X (10, 10))
+
+PTR => X (1,:)
+
+WRITE (*, '(Z16.16," ... ",Z16.16)') LOC (PTR (1)), LOC (PTR (SIZE (PTR)))
+
+CALL TT (PTR)
+
+CONTAINS
+
+SUBROUTINE TT (P)
+
+REAL*8 :: P (:)
+
+WRITE (*, '(Z16.16," ... ",Z16.16)') LOC (P (1)), LOC (P (SIZE (P)))
+
+END SUBROUTINE
+
+END 
+
