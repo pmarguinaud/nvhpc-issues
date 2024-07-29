@@ -21,6 +21,7 @@ PSEND = 99999.
 
 IF (KARG == 0) THEN
 !$acc host_data use_device (PSEND)
+  PRINT *, LOC (PSEND (1))
   CALL MPL_SEND_REAL8_DEVICE (PSEND, IREQUEST)
 !$acc end host_data
 ELSE
