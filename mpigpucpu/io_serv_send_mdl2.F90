@@ -19,8 +19,12 @@ WRITE (0, '(" PSEND (1:10) = ",10F12.4)') PSEND (1:10)
 
 PSEND = 99999.
 
+!$acc data present (PSEND)
+
 IF (KARG == 0) THEN
+  PRINT *, LOC (PSEND (1))
 !$acc host_data use_device (PSEND)
+  PRINT *, LOC (PSEND (1))
   CALL MPL_SEND_REAL8_DEVICE (PSEND, IREQUEST)
 !$acc end host_data
 ELSE
@@ -30,6 +34,7 @@ ELSE
 !$acc end host_data
 ENDIF
 
+!$acc end data
 
 CALL MPI_WAIT (IREQUEST, ISTATUS, IERR)
 
