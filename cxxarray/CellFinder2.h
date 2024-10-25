@@ -5,7 +5,7 @@
 class ObjectHandleBase {
 public:
 
-    virtual ~ObjectHandleBase() {
+    ~ObjectHandleBase() {
     }
 
 private:
