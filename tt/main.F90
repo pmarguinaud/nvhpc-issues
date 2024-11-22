@@ -1,0 +1,10 @@
+PROGRAM MAIN
+
+USE A, ONLY : SS
+USE B, ONLY : TT
+
+TYPE (TT) :: YY
+
+CALL SS (YY)
+
+END 
