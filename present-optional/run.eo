@@ -1,0 +1,15 @@
+belenoslogin0.belenoshpc.meteo.fr
+LSB Version:	:core-4.1-amd64:core-4.1-noarch
+Distributor ID:	RedHatEnterpriseServer
+Description:	Red Hat Enterprise Linux Server release 7.9 (Maipo)
+Release:	7.9
+Codename:	Maipo
+==> gfortran <==
+gfortran is /bin/gfortran
+ F
+==> ifort <==
+ifort is /opt/softs/intel/2018.04/compilers_and_libraries_2018.5.274/linux/bin/intel64/ifort
+ F
+==> pgf90 <==
+pgf90 is /opt/softs/gcc/9.2.0/hpc_sdk/Linux_x86_64/24.7/compilers/bin/pgf90
+  T
