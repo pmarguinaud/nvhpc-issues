@@ -7,7 +7,10 @@ module load nvhpc/25.3
 set -e
 set -x
 
-FFLAGS=" -mp=gpu -fPIC -Minfo -gopt -Mlarge_arrays -Mlist -traceback -Mnofma -Mbyteswapio -Mbackslash -Mstack_arrays -cuda -acc=gpu -O2 -gopt -gpu=cc70,cc80 -Minfo=accel,all,ccf -lnvhpcwrapnvtx -lnvToolsExt"
+FFLAGS="-fPIC -Minfo -gopt -Mlarge_arrays -Mlist -traceback -Mnofma -Mbyteswapio -Mbackslash -Mstack_arrays -cuda -O2 -gopt -gpu=cc70,cc80 -Minfo=accel,all,ccf -lnvhpcwrapnvtx -lnvToolsExt"
+
+# -mp=gpu
+# -acc=gpu
 
 \rm -f *.x 
 
@@ -16,6 +19,7 @@ do
 
   for USE in USE_OPENACC USE_OPENMP
   do
+    export USE
   
     \rm -f *.o *.mod 
     
@@ -24,6 +28,17 @@ do
     (
       set -x 
       set -e
+
+      if [ "$USE" = "USE_OPENMP" ]
+      then
+        FFLAGS="-mp=gpu $FFLAGS"
+      fi
+
+      if [ "$USE" = "USE_OPENACC" ]
+      then
+        FFLAGS="-acc=gpu $FFLAGS"
+      fi
+
       pgf90 -DMOREARGUMENTS=$MOREARGUMENTS -D$USE -c $FFLAGS cucalln_mf_openacc.F90 
       pgf90 -DMOREARGUMENTS=$MOREARGUMENTS -D$USE -c $FFLAGS main_cucalln_mf.F90
       pgf90 -DMOREARGUMENTS=$MOREARGUMENTS -D$USE $FFLAGS \
