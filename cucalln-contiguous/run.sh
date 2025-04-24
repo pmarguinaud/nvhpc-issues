@@ -28,17 +28,16 @@ then
   FFLAGS="-Mcontiguous $FFLAGS"
 fi
 
-pgf90 -c $FFLAGS cucalln_mf_openacc.F90 
 pgf90 -c $FFLAGS acpy_mod.F90
-pgf90 -c $FFLAGS main_cucalln_mf.F90
-pgf90 $FFLAGS -o main_cucalln_mf.CONTIGUOUS=$contiguous.x main_cucalln_mf.o cucalln_mf_openacc.o acpy_mod.o
+pgf90 -c $FFLAGS main_acpy.F90
+pgf90 $FFLAGS -o main_acpy.CONTIGUOUS=$contiguous.x main_acpy.o acpy_mod.o
 ) > compile.CONTIGUOUS=$contiguous.txt 2>&1
     
 nsys profile -f true \
-  -o main_cucalln_mf.CONTIGUOUS=$contiguous.nsys-rep \
-  ./main_cucalln_mf.CONTIGUOUS=$contiguous.x
+  -o main_acpy.CONTIGUOUS=$contiguous.nsys-rep \
+  ./main_acpy.CONTIGUOUS=$contiguous.x
 
-put main_cucalln_mf.CONTIGUOUS=$contiguous.nsys-rep
+put main_acpy.CONTIGUOUS=$contiguous.nsys-rep
 
 done
   
