@@ -1,0 +1,13 @@
+PROGRAM MAIN_CUCALLN_MF 
+
+IMPLICIT NONE
+
+#include "cucalln_mf.intfb.h"
+
+!$ACC SERIAL
+  
+CALL CUCALLN_MF_OPENACC (1)
+  
+!$ACC END SERIAL
+
+END
