@@ -4,6 +4,7 @@ IMPLICIT NONE
 
 SAVE
 
-CHARACTER(LEN=8), PARAMETER :: CPAERO_WVL_DIAG_LABEL(5) = (/ 'OptDepth', 'AbOptDep', 'FMOptDep', 'SScatAlb', 'Asymmetr' /)
+!CHARACTER(LEN=8), PARAMETER :: CPAERO_WVL_DIAG_LABEL(5) = (/ 'OptDepth', 'AbOptDep', 'FMOptDep', 'SScatAlb', 'Asymmetr' /)
+CHARACTER(LEN=8), PARAMETER :: CPAERO_WVL_DIAG_LABEL = 'OptDepth'
 
 END MODULE YOE_AERODIAG
