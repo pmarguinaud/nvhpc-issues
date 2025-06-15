@@ -1,6 +1,8 @@
 PROGRAM MAIN
 
+#ifdef __PGI
 USE NVTX
+#endif
 
 IMPLICIT NONE
 
@@ -26,7 +28,9 @@ END SUBROUTINE
 END INTERFACE
 
 
+#ifdef __PGI
 CALL NVTXSTARTRANGE ("MAIN")
+#endif
 
 NPROMA = 32
 NFLEVG = 4
@@ -69,6 +73,8 @@ CALL LINA (NPROMA, NFLEVG, NGPBLKS, XA (:,:,1,:), YA (:,:,1,:))
 
 !$ACC END DATA
 
+#ifdef __PGI
 CALL NVTXENDRANGE
+#endif
 
 END
