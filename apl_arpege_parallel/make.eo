@@ -1,0 +1,387 @@
+gfortran -ffree-line-length-512 -o ./mf_phys_next_state_type_mod.o -c ./mf_phys_next_state_type_mod.F90
+./mf_phys_next_state_type_mod.F90:129:19:
+
+ CALL SELF%DIMS%INIT (YDGEOMETRY, YDMODEL, YDVARS)
+                   1
+Error: 'init' at (1) is not a member of the 'cpg_dims_vars_type' structure
+./mf_phys_next_state_type_mod.F90:735:33:
+
+   SELF%U%P => SELF%U%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:739:33:
+
+   SELF%V%P => SELF%V%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:743:33:
+
+   SELF%T%P => SELF%T%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:747:37:
+
+   SELF%SVD%P => SELF%SVD%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:751:35:
+
+   SELF%SP%P => SELF%SP%F_P%GET_VIEW (BLOCK_INDEX)
+                                   1
+Error: 'get_view' at (1) is not a member of the 'field_2rb' structure
+./mf_phys_next_state_type_mod.F90:755:33:
+
+   SELF%Q%P => SELF%Q%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:758:33:
+
+   SELF%I%P => SELF%I%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:761:33:
+
+   SELF%L%P => SELF%L%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:764:37:
+
+   SELF%IMF%P => SELF%IMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:767:37:
+
+   SELF%LMF%P => SELF%LMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:770:39:
+
+   SELF%HLMF%P => SELF%HLMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:773:39:
+
+   SELF%HIMF%P => SELF%HIMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:776:41:
+
+   SELF%LCONV%P => SELF%LCONV%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:779:41:
+
+   SELF%ICONV%P => SELF%ICONV%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:782:41:
+
+   SELF%RCONV%P => SELF%RCONV%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:785:41:
+
+   SELF%SCONV%P => SELF%SCONV%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:788:39:
+
+   SELF%IRAD%P => SELF%IRAD%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:791:39:
+
+   SELF%LRAD%P => SELF%LRAD%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:794:33:
+
+   SELF%S%P => SELF%S%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:797:33:
+
+   SELF%R%P => SELF%R%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:800:33:
+
+   SELF%G%P => SELF%G%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:803:33:
+
+   SELF%H%P => SELF%H%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:806:37:
+
+   SELF%TKE%P => SELF%TKE%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:809:37:
+
+   SELF%TTE%P => SELF%TTE%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:812:39:
+
+   SELF%EFB1%P => SELF%EFB1%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:815:39:
+
+   SELF%EFB2%P => SELF%EFB2%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:818:39:
+
+   SELF%EFB3%P => SELF%EFB3%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:821:33:
+
+   SELF%A%P => SELF%A%F_P%GET_VIEW (BLOCK_INDEX)
+                                 1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:824:37:
+
+   SELF%AMF%P => SELF%AMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:827:39:
+
+   SELF%WMFC%P => SELF%WMFC%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:830:43:
+
+   SELF%HLCFMF%P => SELF%HLCFMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:833:43:
+
+   SELF%HICFMF%P => SELF%HICFMF%F_P%GET_VIEW (BLOCK_INDEX)
+                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:836:35:
+
+   SELF%O3%P => SELF%O3%F_P%GET_VIEW (BLOCK_INDEX)
+                                   1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:839:37:
+
+   SELF%SRC%P => SELF%SRC%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:842:37:
+
+   SELF%MXL%P => SELF%MXL%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:845:41:
+
+   SELF%SHTUR%P => SELF%SHTUR%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:848:41:
+
+   SELF%FQTUR%P => SELF%FQTUR%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:851:41:
+
+   SELF%FSTUR%P => SELF%FSTUR%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:854:37:
+
+   SELF%CPF%P => SELF%CPF%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:857:37:
+
+   SELF%SPF%P => SELF%SPF%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:860:39:
+
+   SELF%CVGQ%P => SELF%CVGQ%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:863:37:
+
+   SELF%QVA%P => SELF%QVA%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:868:53:
+
+       SELF%GHG(JGFL)%P => SELF%GHG(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:875:55:
+
+       SELF%CHEM(JGFL)%P => SELF%CHEM(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:882:55:
+
+       SELF%AERO(JGFL)%P => SELF%AERO(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:887:41:
+
+   SELF%LRCH4%P => SELF%LRCH4%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:892:55:
+
+       SELF%FORC(JGFL)%P => SELF%FORC(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:899:59:
+
+       SELF%EZDIAG(JGFL)%P => SELF%EZDIAG(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:906:57:
+
+       SELF%ERA40(JGFL)%P => SELF%ERA40(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:913:55:
+
+       SELF%NOGW(JGFL)%P => SELF%NOGW(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:920:59:
+
+       SELF%EMIS3D(JGFL)%P => SELF%EMIS3D(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:927:55:
+
+       SELF%EDRP(JGFL)%P => SELF%EDRP(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:934:57:
+
+       SELF%SLDIA(JGFL)%P => SELF%SLDIA(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:941:59:
+
+       SELF%AERAOT(JGFL)%P => SELF%AERAOT(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:948:61:
+
+       SELF%AERLISI(JGFL)%P => SELF%AERLISI(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                             1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:955:59:
+
+       SELF%AEROUT(JGFL)%P => SELF%AEROUT(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:962:63:
+
+       SELF%AEROCLIM(JGFL)%P => SELF%AEROCLIM(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                               1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:969:53:
+
+       SELF%UVP(JGFL)%P => SELF%UVP(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:974:43:
+
+   SELF%PHYCTY%P => SELF%PHYCTY%F_P%GET_VIEW (BLOCK_INDEX)
+                                           1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:977:41:
+
+   SELF%RSPEC%P => SELF%RSPEC%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:980:41:
+
+   SELF%SDSAT%P => SELF%SDSAT%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:983:37:
+
+   SELF%CVV%P => SELF%CVV%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:986:39:
+
+   SELF%RKTH%P => SELF%RKTH%F_P%GET_VIEW (BLOCK_INDEX)
+                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:989:41:
+
+   SELF%RKTQV%P => SELF%RKTQV%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:992:41:
+
+   SELF%RKTQC%P => SELF%RKTQC%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:995:37:
+
+   SELF%UOM%P => SELF%UOM%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:998:37:
+
+   SELF%UAL%P => SELF%UAL%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1001:37:
+
+   SELF%DOM%P => SELF%DOM%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1004:37:
+
+   SELF%DAL%P => SELF%DAL%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1007:37:
+
+   SELF%UEN%P => SELF%UEN%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1010:35:
+
+   SELF%MO%P => SELF%MO%F_P%GET_VIEW (BLOCK_INDEX)
+                                   1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1013:41:
+
+   SELF%UNEBH%P => SELF%UNEBH%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1018:55:
+
+       SELF%LIMA(JGFL)%P => SELF%LIMA(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                       1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1023:37:
+
+   SELF%FSD%P => SELF%FSD%F_P%GET_VIEW (BLOCK_INDEX)
+                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1028:53:
+
+       SELF%EXT(JGFL)%P => SELF%EXT(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+                                                     1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+./mf_phys_next_state_type_mod.F90:1033:41:
+
+   SELF%THRAD%P => SELF%THRAD%F_P%GET_VIEW (BLOCK_INDEX)
+                                         1
+Error: 'get_view' at (1) is not a member of the 'field_3rb' structure
+make: *** [Makefile:174: mf_phys_next_state_type_mod.o] Error 1

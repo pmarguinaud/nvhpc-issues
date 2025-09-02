@@ -1,0 +1,196 @@
+#! (C) Copyright 2022- ECMWF.
+#! (C) Copyright 2022- Meteo-France.
+#!
+#! This software is licensed under the terms of the Apache Licence Version 2.0
+#! which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+#! In applying this licence, ECMWF does not waive the privileges and immunities
+#! granted to it by virtue of its status as an intergovernmental organisation
+#! nor does it submit to any jurisdiction.
+
+MODULE FIELD_${RANK}$${SUFF}$_UTIL_MODULE
+
+#:set fieldTypeList = fieldType.getFieldTypeList (ranks=[RANK], kinds=['JP' + SUFF])
+
+USE FIELD_${RANK}$${SUFF}$_MODULE
+USE FIELD_${RANK}$${SUFF}$_ACCESS_MODULE
+
+${fieldType.useParkind1 ()}$
+
+IMPLICIT NONE
+
+#:if defined('WITH_FIAT')
+#:set method_list = ['LOAD', 'SAVE', 'DIFF', 'COPY', 'WIPE', 'HOST', 'LEGACY', 'CRC64']
+#:else
+#:set method_list = ['LOAD', 'SAVE', 'DIFF', 'COPY', 'WIPE', 'HOST', 'LEGACY']
+#:endif
+
+#:for method in method_list
+INTERFACE ${method}$
+#:for ft in fieldTypeList
+  MODULE PROCEDURE ${method}$_${ft.name}$
+#:if method not in ['DIFF', 'CRC64', 'LEGACY']
+  MODULE PROCEDURE ${method}$_${ft.name}$_PTR
+#:if ft.hasView
+  MODULE PROCEDURE ${method}$_${ft.name}$_VIEW
+#:endif
+#:endif
+#:endfor
+END INTERFACE
+
+#:endfor
+
+CONTAINS
+
+#:for ft in fieldTypeList
+#:if defined('WITH_FIAT')
+INTEGER*8 FUNCTION CRC64_${ft.name}$ (YD)
+CLASS (${ft.name}$), POINTER :: YD
+INTEGER*8 :: ICRC
+
+ICRC = 0
+
+IF (ASSOCIATED (YD)) THEN
+  ICRC = YD%CRC64 ()
+ENDIF
+
+CRC64_${ft.name}$ = ICRC
+
+END FUNCTION
+#:endif
+
+SUBROUTINE LOAD_${ft.name}$ (KLUN, YD)
+
+USE PARKIND1, ONLY : JPIM
+
+INTEGER (KIND=JPIM), INTENT (IN) :: KLUN
+CLASS (${ft.name}$), POINTER :: YD
+
+END SUBROUTINE
+
+SUBROUTINE SAVE_${ft.name}$ (KLUN, YD)
+
+USE PARKIND1, ONLY : JPIM
+
+INTEGER (KIND=JPIM), INTENT (IN) :: KLUN
+CLASS (${ft.name}$), POINTER :: YD
+
+END SUBROUTINE
+
+SUBROUTINE DIFF_${ft.name}$ (CDMESS, YD, YO)
+
+CHARACTER (LEN=*), INTENT(IN) :: CDMESS
+CLASS (${ft.name}$), POINTER :: YD, YO
+
+END SUBROUTINE
+
+SUBROUTINE COPY_${ft.name}$ (SELF, LDCREATED)
+
+CLASS (${ft.name}$), POINTER :: SELF
+LOGICAL, INTENT (IN), OPTIONAL :: LDCREATED
+
+END SUBROUTINE 
+
+SUBROUTINE WIPE_${ft.name}$ (SELF, LDDELETED)
+
+CLASS (${ft.name}$) :: SELF
+LOGICAL, INTENT (IN), OPTIONAL :: LDDELETED
+
+END SUBROUTINE 
+
+SUBROUTINE HOST_${ft.name}$ (SELF)
+CLASS (${ft.name}$), POINTER :: SELF
+
+END SUBROUTINE 
+
+SUBROUTINE LEGACY_${ft.name}$ (SELF, KADDRL, KADDRU, KDIR)
+
+USE ${ft.name}$_ACCESS_MODULE
+
+CLASS (${ft.name}$), POINTER :: SELF
+INTEGER*8, INTENT (IN) :: KADDRL
+INTEGER*8, INTENT (IN) :: KADDRU
+INTEGER,   INTENT (IN) :: KDIR
+
+${ft.type}$, POINTER :: PTR (${ft.shape}$), DEVPTR (${ft.shape}$)
+INTEGER*8 :: IADDRL
+INTEGER*8 :: IADDRU
+INTEGER (KIND=JPIM) :: ILBOUNDS (${ft.rank}$)
+INTEGER (KIND=JPIM) :: IUBOUNDS (${ft.rank}$)
+
+END SUBROUTINE 
+
+#:if ft.hasView
+
+SUBROUTINE LOAD_${ft.name}$_VIEW (KLUN, YD)
+USE PARKIND1, ONLY : JPIM
+INTEGER (KIND=JPIM), INTENT (IN) :: KLUN
+CLASS (${ft.name}$_VIEW) :: YD
+! Do nothing
+END SUBROUTINE
+
+SUBROUTINE SAVE_${ft.name}$_VIEW (KLUN, YD)
+USE PARKIND1, ONLY : JPIM
+INTEGER (KIND=JPIM), INTENT (IN) :: KLUN
+CLASS (${ft.name}$_VIEW) :: YD
+! Do nothing
+END SUBROUTINE
+
+SUBROUTINE COPY_${ft.name}$_VIEW (SELF, LDCREATED)
+CLASS (${ft.name}$_VIEW) :: SELF
+LOGICAL, INTENT (IN), OPTIONAL :: LDCREATED
+! Do nothing
+END SUBROUTINE 
+
+SUBROUTINE WIPE_${ft.name}$_VIEW (SELF, LDDELETED)
+CLASS (${ft.name}$_VIEW) :: SELF
+LOGICAL, INTENT (IN), OPTIONAL :: LDDELETED
+! Do nothing
+END SUBROUTINE 
+
+SUBROUTINE HOST_${ft.name}$_VIEW (SELF)
+CLASS (${ft.name}$_VIEW) :: SELF
+! Do nothing
+END SUBROUTINE 
+
+#:endif
+
+SUBROUTINE LOAD_${ft.name}$_PTR (KLUN, YD)
+
+USE PARKIND1, ONLY : JPIM
+
+INTEGER (KIND=JPIM), INTENT (IN) :: KLUN
+CLASS (${ft.name}$_PTR) :: YD
+
+END SUBROUTINE
+
+SUBROUTINE SAVE_${ft.name}$_PTR (KLUN, YD)
+
+USE PARKIND1, ONLY : JPIM
+
+INTEGER (KIND=JPIM), INTENT (IN) :: KLUN
+CLASS (${ft.name}$_PTR) :: YD
+
+END SUBROUTINE
+
+SUBROUTINE COPY_${ft.name}$_PTR (SELF, LDCREATED)
+
+CLASS (${ft.name}$_PTR) :: SELF
+LOGICAL, INTENT (IN), OPTIONAL :: LDCREATED
+
+END SUBROUTINE 
+
+SUBROUTINE WIPE_${ft.name}$_PTR (SELF, LDDELETED)
+
+CLASS (${ft.name}$_PTR) :: SELF
+LOGICAL, INTENT (IN), OPTIONAL :: LDDELETED
+
+END SUBROUTINE 
+
+SUBROUTINE HOST_${ft.name}$_PTR (SELF)
+CLASS (${ft.name}$_PTR) :: SELF
+
+END SUBROUTINE 
+
+#:endfor
+
+END MODULE

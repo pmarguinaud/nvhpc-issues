@@ -1,0 +1,102 @@
+#! (C) Copyright 2022- ECMWF.
+#! (C) Copyright 2022- Meteo-France.
+#! (C) Copyright 2023- NVIDIA
+#!
+#! This software is licensed under the terms of the Apache Licence Version 2.0
+#! which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+#! In applying this licence, ECMWF does not waive the privileges and immunities
+#! granted to it by virtue of its status as an intergovernmental organisation
+#! nor does it submit to any jurisdiction.
+
+MODULE FIELD_${RANK}$${SUFF}$_DATA_MODULE
+
+#:set fieldTypeList = fieldType.getFieldTypeList (ranks=[RANK], kinds=['JP' + str (SUFF)])
+
+${fieldType.useParkind1 ()}$
+
+IMPLICIT NONE
+
+PRIVATE
+
+#:for ft in fieldTypeList
+#:set ftn = ft.name
+
+PUBLIC :: ${ftn}$_COPY
+PUBLIC :: ${ftn}$_COPY_FUNC
+PUBLIC :: ${ftn}$_COPY_INTF
+
+ABSTRACT INTERFACE
+  SUBROUTINE ${ftn}$_COPY_INTF (HST, DEV, MAP_DEVPTR, KDIR, QUEUE)
+#:if 'IM' in ftn
+    IMPORT :: ${ft.kind}$
+#:else
+    IMPORT :: JPIM, ${ft.kind}$
+#:endif
+    ${ft.type}$, POINTER :: HST (${ft.shape}$), DEV (${ft.shape}$)
+    LOGICAL,                       INTENT (IN) :: MAP_DEVPTR
+    INTEGER (KIND=JPIM),           INTENT (IN) :: KDIR
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT (IN) :: QUEUE
+  END SUBROUTINE
+END INTERFACE
+#:endfor
+
+CONTAINS
+
+#:for ft in fieldTypeList
+#:set ftn = ft.name
+
+  FUNCTION ${ftn}$_COPY_FUNC (HST, DEV) RESULT (FUNC)
+
+    PROCEDURE (${ftn}$_COPY_INTF), POINTER :: FUNC 
+
+    ${ft.type}$, POINTER, OPTIONAL :: HST (${ft.shape}$), DEV (${ft.shape}$)
+
+  END FUNCTION
+
+  SUBROUTINE ${ftn}$_COPY (HST, DEV, MAP_DEVPTR, KDIR, QUEUE)
+
+    ${ft.type}$, POINTER :: HST (${ft.shape}$), DEV (${ft.shape}$)
+    LOGICAL,                       INTENT (IN) :: MAP_DEVPTR
+    INTEGER (KIND=JPIM),           INTENT (IN) :: KDIR
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT (IN) :: QUEUE
+
+    PROCEDURE (${ftn}$_COPY_INTF), POINTER :: FUNC 
+
+  END SUBROUTINE
+
+#:for d in range (0, ft.rank+1)
+  SUBROUTINE ${ftn}$_COPY_DIM${d}$_CONTIGUOUS (HST, DEV, MAP_DEVPTR, KDIR, QUEUE)
+#ifdef _OPENACC
+  USE OPENACC
+#endif
+  USE, INTRINSIC :: ISO_FORTRAN_ENV, ONLY : INT64
+    ${ft.type}$, POINTER :: HST (${ft.shape}$), DEV (${ft.shape}$)
+    LOGICAL,                       INTENT (IN) :: MAP_DEVPTR
+    INTEGER (KIND=JPIM),           INTENT (IN) :: KDIR
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT (IN) :: QUEUE
+    INTEGER (KIND=INT64)                       :: ISIZE
+    INTEGER :: ${', '.join (['J'] + list (map (lambda i: 'J' + str (i+1), range (d, ft.rank))))}$
+#ifdef _OPENACC
+    TYPE(C_DEVPTR) :: DEVPTR
+#endif
+
+    END SUBROUTINE
+
+#:endfor
+
+#:endfor
+
+#:for ft in fieldTypeList
+#:set ftn = ft.name
+
+  INTEGER (KIND=JPIM) FUNCTION ${ftn}$_GET_LAST_CONTIGUOUS_DIMENSION (PTR, AFTER) RESULT (JDIM)
+  ${ft.type}$, POINTER :: PTR (${ft.shape}$)
+  INTEGER (KIND=JPIM) :: AFTER
+  INTEGER*8 :: IPREVIOUS_STRIDE, ITHIS_STRIDE, ISIZE
+  INTEGER (KIND=JPIM) :: J, LB(${ft.rank}$)
+
+  END FUNCTION ${ftn}$_GET_LAST_CONTIGUOUS_DIMENSION
+
+#:endfor
+
+END MODULE FIELD_${RANK}$${SUFF}$_DATA_MODULE

@@ -1,0 +1,37 @@
+MODULE MODEL_DIAGNOSTICS_MOD
+
+!$ACDC methods 
+
+  USE YOMCDDH , ONLY : TCDDH
+  USE YOMLDDH , ONLY : TLDDH
+  USE YOMMDDH , ONLY : TMDDH
+  USE YOMSDDH , ONLY : TSDDH
+  IMPLICIT NONE
+
+  TYPE MODEL_DIAGNOSTICS_TYPE
+
+  TYPE(TCDDH)              :: YRCDDH
+  TYPE(TLDDH)              :: YRLDDH
+  TYPE(TMDDH)              :: YRMDDH
+  TYPE(TSDDH)              :: YRSDDH
+
+CONTAINS
+  
+    
+  END TYPE MODEL_DIAGNOSTICS_TYPE
+
+  !---------------------------------------------------------------------
+
+  CONTAINS 
+
+  SUBROUTINE PRINT_CONFIGURATION(SELF, KDEPTH, KOUTNO)
+  IMPLICIT NONE
+  CLASS(MODEL_DIAGNOSTICS_TYPE), INTENT(IN) :: SELF
+  INTEGER                      , INTENT(IN) :: KDEPTH
+  INTEGER                      , INTENT(IN) :: KOUTNO
+
+  WRITE(KOUTNO,*) REPEAT(' ',KDEPTH) // 'model%yrml_phy_diag : not yet printable'
+
+  END SUBROUTINE PRINT_CONFIGURATION
+
+END MODULE MODEL_DIAGNOSTICS_MOD

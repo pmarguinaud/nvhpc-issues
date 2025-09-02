@@ -1,0 +1,396 @@
+#! (C) Copyright 2022- ECMWF.
+#! (C) Copyright 2022- Meteo-France.
+#! (C) Copyright 2023- NVIDIA
+#!
+#! This software is licensed under the terms of the Apache Licence Version 2.0
+#! which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+#! In applying this licence, ECMWF does not waive the privileges and immunities
+#! granted to it by virtue of its status as an intergovernmental organisation
+#! nor does it submit to any jurisdiction.
+
+MODULE FIELD_${RANK}$${SUFF}$_MODULE
+
+#:set fieldTypeList = fieldType.getFieldTypeList (ranks=[RANK], kinds=['JP' + str (SUFF)])
+
+USE OML_MOD, ONLY: OML_MAX_THREADS , OML_MY_THREAD 
+USE IEEE_ARITHMETIC, ONLY: IEEE_SIGNALING_NAN
+USE FIELD_BASIC_MODULE
+#:if defined('CUDA')
+USE CUDAFOR
+#:endif
+#ifdef _OPENACC
+USE OPENACC
+#endif
+${fieldType.useParkind1 ()}$
+
+#:for ft in fieldTypeList
+#:set ftn = ft.name
+USE FIELD_${RANK}$${SUFF}$_DATA_MODULE, ONLY : ${ftn}$_COPY_INTF
+#:endfor
+
+IMPLICIT NONE
+
+PRIVATE
+
+#:for ft in fieldTypeList
+#:set ftn = ft.name
+TYPE, ABSTRACT, EXTENDS (FIELD_BASIC) :: ${ftn}$
+  ${ft.type}$, POINTER :: PTR(${ft.shape}$) => NULL()
+  ${ft.type}$, POINTER, CONTIGUOUS :: DEVPTR(${ft.shape}$) => NULL()
+  PROCEDURE (${ftn}$_COPY_INTF), POINTER, NOPASS :: COPY_FUNC => NULL ()
+CONTAINS
+
+  PROCEDURE :: FINAL => ${ftn}$_FINAL
+  PROCEDURE :: ${ftn}$_FINAL
+  PROCEDURE :: DELETE_DEVICE_DATA => ${ftn}$_DELETE_DEVICE_DATA
+#:if ft.hasView
+  PROCEDURE :: GET_VIEW => ${ftn}$_GET_VIEW
+#:endif
+  PROCEDURE :: GET_DEVICE_DATA_RDONLY => ${ftn}$_GET_DEVICE_DATA_RDONLY
+  PROCEDURE :: GET_DEVICE_DATA_WRONLY => ${ftn}$_GET_DEVICE_DATA_WRONLY
+  PROCEDURE :: GET_DEVICE_DATA_RDWR => ${ftn}$_GET_DEVICE_DATA_RDWR
+  PROCEDURE :: GET_HOST_DATA_RDONLY => ${ftn}$_GET_HOST_DATA_RDONLY
+  PROCEDURE :: GET_HOST_DATA_RDWR => ${ftn}$_GET_HOST_DATA_RDWR
+  PROCEDURE :: SYNC_HOST_RDWR => ${ftn}$_SYNC_HOST_RDWR
+  PROCEDURE :: SYNC_HOST_RDONLY => ${ftn}$_SYNC_HOST_RDONLY
+  PROCEDURE :: SYNC_DEVICE_RDWR => ${ftn}$_SYNC_DEVICE_RDWR
+  PROCEDURE :: SYNC_DEVICE_RDONLY => ${ftn}$_SYNC_DEVICE_RDONLY
+  PROCEDURE :: COPY_OBJECT => ${ftn}$_COPY_OBJECT
+  PROCEDURE :: WIPE_OBJECT => ${ftn}$_WIPE_OBJECT
+  PROCEDURE(GET_DIMS), DEFERRED :: GET_DIMS
+  PROCEDURE(RESIZE), DEFERRED :: RESIZE
+
+  PROCEDURE :: GET_DEVICE_DATA => ${ftn}$_GET_DEVICE_DATA
+  PROCEDURE :: GET_HOST_DATA => ${ftn}$_GET_HOST_DATA
+  PROCEDURE, PRIVATE :: ${ftn}$_GET_HOST_DATA
+  PROCEDURE, PRIVATE :: ${ftn}$_GET_DEVICE_DATA
+  PROCEDURE, PRIVATE :: COPY_DATA =>  ${ftn}$_COPY_DATA
+  PROCEDURE :: CREATE_DEVICE_DATA => ${ftn}$_CREATE_DEVICE_DATA
+#:if defined('WITH_FIAT')
+  PROCEDURE :: CRC64 => ${ftn}$_CRC64
+#:endif
+#ifdef __PGI
+  PROCEDURE :: SET_STATUS => ${ftn}$_SET_STATUS
+#endif
+END TYPE ${ftn}$
+
+ABSTRACT INTERFACE
+  SUBROUTINE GET_DIMS(SELF, LBOUNDS, UBOUNDS)
+    ${fieldType.useParkind1 ()}$
+    IMPORT ::  ${ftn}$
+    CLASS(${ftn}$),               INTENT(IN) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(OUT) :: LBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(OUT) :: UBOUNDS(${ft.rank}$)
+  END SUBROUTINE GET_DIMS
+  SUBROUTINE RESIZE (SELF, UBOUNDS, LBOUNDS, PERSISTENT)
+    ${fieldType.useParkind1 ()}$
+    IMPORT ::  ${ftn}$
+    CLASS(${ftn}$),               INTENT(IN) :: SELF
+    INTEGER(KIND=JPIM),           INTENT(IN) :: UBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN) :: LBOUNDS(${ft.rank}$)
+    LOGICAL, OPTIONAL,            INTENT(IN) :: PERSISTENT
+  END SUBROUTINE RESIZE
+END INTERFACE
+
+PUBLIC :: ${ftn}$
+
+TYPE, EXTENDS(${ftn}$) :: ${ftn}$_WRAPPER
+  LOGICAL :: SYNC_ON_FINAL = .TRUE.
+CONTAINS
+  PROCEDURE :: INIT => ${ftn}$_WRAPPER_INIT
+  PROCEDURE :: FINAL => ${ftn}$_WRAPPER_FINAL
+  PROCEDURE :: GET_DIMS => ${ftn}$_WRAPPER_GET_DIMS
+  PROCEDURE :: RESIZE => ${ftn}$_WRAPPER_RESIZE
+END TYPE ${ftn}$_WRAPPER
+
+PUBLIC :: ${ftn}$_WRAPPER
+
+TYPE, EXTENDS(${ftn}$) :: ${ftn}$_OWNER
+  INTEGER(KIND=JPIM) :: LBOUNDS(${ft.rank}$), UBOUNDS(${ft.rank}$)
+  LOGICAL :: HAS_INIT_VALUE = .FALSE.
+  LOGICAL :: PINNED = .FALSE.
+  LOGICAL :: POOLED = .FALSE.
+  ${ft.type}$ :: INIT_VALUE
+CONTAINS
+  PROCEDURE :: INIT => ${ftn}$_OWNER_INIT
+  PROCEDURE :: FINAL => ${ftn}$_OWNER_FINAL
+  PROCEDURE, PRIVATE :: CREATE_HOST_DATA => ${ftn}$_OWNER_CREATE_HOST_DATA
+  PROCEDURE :: GET_HOST_DATA => ${ftn}$_OWNER_GET_HOST_DATA
+  PROCEDURE :: GET_DEVICE_DATA => ${ftn}$_OWNER_GET_DEVICE_DATA
+  PROCEDURE :: GET_DIMS => ${ftn}$_OWNER_GET_DIMS
+  PROCEDURE :: RESIZE => ${ftn}$_OWNER_RESIZE
+END TYPE ${ftn}$_OWNER
+
+PUBLIC :: ${ftn}$_OWNER
+
+TYPE ${ftn}$_PTR
+  CLASS(${ftn}$), POINTER :: PTR => NULL()
+END TYPE ${ftn}$_PTR
+
+PUBLIC :: ${ftn}$_PTR
+
+#:if ft.hasView
+TYPE ${ftn}$_VIEW
+  ${ft.type}$, POINTER :: P(${ft.viewShape}$) => NULL()
+END TYPE ${ftn}$_VIEW
+
+PUBLIC :: ${ftn}$_VIEW
+#:endif
+
+#:endfor
+
+CONTAINS
+
+#:for ft in fieldTypeList
+#:set ftn = ft.name
+  SUBROUTINE ${ftn}$_WRAPPER_INIT(SELF, DATA, PERSISTENT, LBOUNDS, MAP_DEVPTR, SYNC_ON_FINAL, INITIALIZED)
+    USE ${ftn}$_DATA_MODULE, ONLY : ${ftn}$_COPY_FUNC
+
+    ! Create FIELD object by wrapping existing data
+    CLASS(${ftn}$_WRAPPER) :: SELF
+    ${ft.type}$, TARGET, INTENT(IN) :: DATA(${ft.shape}$)
+    LOGICAL, INTENT(IN), OPTIONAL :: PERSISTENT
+    LOGICAL, INTENT(IN), OPTIONAL :: MAP_DEVPTR
+    INTEGER(KIND=JPIM), INTENT(IN), OPTIONAL :: LBOUNDS(${ft.rank}$)
+    LOGICAL, INTENT(IN), OPTIONAL :: SYNC_ON_FINAL
+    LOGICAL, INTENT(IN), OPTIONAL :: INITIALIZED
+    
+  END SUBROUTINE ${ftn}$_WRAPPER_INIT
+
+  SUBROUTINE ${ftn}$_OWNER_INIT (SELF, LBOUNDS, UBOUNDS, PERSISTENT, DELAYED, INIT_VALUE, PINNED, MAP_DEVPTR, POOLED)
+    USE ${ftn}$_DATA_MODULE, ONLY : ${ftn}$_COPY_FUNC
+
+    CLASS(${ftn}$_OWNER) :: SELF
+    INTEGER(KIND=JPIM), INTENT(IN), OPTIONAL :: LBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), INTENT(IN) :: UBOUNDS(${ft.rank}$)
+    LOGICAL, OPTIONAL,  INTENT(IN) :: PERSISTENT
+    LOGICAL, OPTIONAL,  INTENT(IN) :: DELAYED
+    LOGICAL, OPTIONAL,  INTENT(IN) :: PINNED
+    LOGICAL, OPTIONAL,  INTENT(IN) :: MAP_DEVPTR
+    LOGICAL, OPTIONAL,  INTENT(IN) :: POOLED
+    ${ft.type}$, OPTIONAL, INTENT(IN) :: INIT_VALUE
+    LOGICAL :: IS_DELAYED
+    LOGICAL :: LLPERSISTENT
+
+  END SUBROUTINE ${ftn}$_OWNER_INIT
+
+  SUBROUTINE ${ftn}$_OWNER_CREATE_HOST_DATA (SELF)
+    ! Create FIELD object by explicitly allocating new data
+    CLASS(${ftn}$_OWNER) :: SELF
+
+  END SUBROUTINE ${ftn}$_OWNER_CREATE_HOST_DATA
+
+#:if ft.hasView
+  FUNCTION ${ftn}$_GET_VIEW(SELF, BLOCK_INDEX, ZERO) RESULT(VIEW_PTR)
+
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER :: VIEW_PTR(${ft.viewShape}$)
+    INTEGER(KIND=JPIM), INTENT(IN) :: BLOCK_INDEX
+    LOGICAL, OPTIONAL,  INTENT(IN) :: ZERO
+    INTEGER(KIND=JPIM) :: IDX
+    INTEGER(KIND=JPIM) :: LBOUNDS(${ft.rank}$)
+
+  END FUNCTION ${ftn}$_GET_VIEW
+#:endif
+
+  SUBROUTINE ${ftn}$_DELETE_DEVICE_DATA(SELF)
+    ! Delete the copy of this field on GPU device
+    CLASS(${ftn}$) :: SELF
+
+  END SUBROUTINE ${ftn}$_DELETE_DEVICE_DATA
+
+  SUBROUTINE ${ftn}$_FINAL(SELF)
+    ! Finalizes field and deallocates owned data
+    CLASS(${ftn}$) :: SELF
+  END SUBROUTINE ${ftn}$_FINAL
+
+  SUBROUTINE ${ftn}$_WRAPPER_FINAL(SELF)
+    ! Finalizes field and deallocates owned data
+    CLASS(${ftn}$_WRAPPER) :: SELF
+  END SUBROUTINE ${ftn}$_WRAPPER_FINAL
+
+  SUBROUTINE ${ftn}$_OWNER_FINAL(SELF)
+    ! Finalizes field and deallocates owned data
+    CLASS(${ftn}$_OWNER) :: SELF
+
+  END SUBROUTINE ${ftn}$_OWNER_FINAL
+
+  SUBROUTINE ${ftn}$_COPY_OBJECT (SELF, LDCREATED)
+
+  CLASS(${ftn}$) :: SELF
+  LOGICAL, INTENT (IN), OPTIONAL :: LDCREATED
+  LOGICAL :: LLCREATED
+
+  END SUBROUTINE ${ftn}$_COPY_OBJECT
+
+  SUBROUTINE ${ftn}$_WIPE_OBJECT (SELF, LDDELETED)
+
+  CLASS(${ftn}$) :: SELF
+  LOGICAL, INTENT (IN), OPTIONAL :: LDDELETED
+  LOGICAL :: LLDELETED
+
+  END SUBROUTINE ${ftn}$_WIPE_OBJECT
+
+  SUBROUTINE ${ftn}$_COPY_DATA (SELF, KDIR, QUEUE)
+
+  CLASS(${ftn}$) :: SELF
+  INTEGER (KIND=JPIM),           INTENT(IN) :: KDIR
+  INTEGER (KIND=JPIM), OPTIONAL, INTENT(IN) :: QUEUE
+  REAL :: START, FINISH
+
+  END SUBROUTINE ${ftn}$_COPY_DATA
+
+  SUBROUTINE ${ftn}$_GET_HOST_DATA (SELF, MODE, PTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    INTEGER (KIND=JPIM),           INTENT(IN)    :: MODE
+
+    ${ft.type}$, POINTER,          INTENT(INOUT) :: PTR(${ft.shape}$)
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_GET_HOST_DATA
+
+  SUBROUTINE ${ftn}$_OWNER_GET_HOST_DATA (SELF, MODE, PTR, QUEUE)
+    CLASS(${ftn}$_OWNER) :: SELF
+    INTEGER (KIND=JPIM),           INTENT(IN)    :: MODE
+    ${ft.type}$, POINTER,          INTENT(INOUT) :: PTR(${ft.shape}$)
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_OWNER_GET_HOST_DATA
+
+  SUBROUTINE ${ftn}$_GET_HOST_DATA_RDONLY (SELF, PPTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER,         INTENT(INOUT) :: PPTR(${ft.shape}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_GET_HOST_DATA_RDONLY
+
+  SUBROUTINE ${ftn}$_SYNC_HOST_RDONLY (SELF, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+    ${ft.type}$, POINTER                        :: ZPTR(${ft.shape}$)
+
+  END SUBROUTINE ${ftn}$_SYNC_HOST_RDONLY
+
+  SUBROUTINE ${ftn}$_GET_HOST_DATA_RDWR (SELF, PPTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER,         INTENT(INOUT) :: PPTR(${ft.shape}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_GET_HOST_DATA_RDWR
+
+  SUBROUTINE ${ftn}$_SYNC_HOST_RDWR (SELF, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+    ${ft.type}$, POINTER                        :: ZPTR(${ft.shape}$)
+
+  END SUBROUTINE ${ftn}$_SYNC_HOST_RDWR
+
+  SUBROUTINE ${ftn}$_CREATE_DEVICE_DATA (SELF)
+    CLASS(${ftn}$) :: SELF
+
+  END SUBROUTINE
+
+  SUBROUTINE ${ftn}$_GET_DEVICE_DATA (SELF, MODE, PTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    INTEGER (KIND=JPIM),           INTENT(IN)    :: MODE
+    ${ft.type}$, POINTER,          INTENT(INOUT) :: PTR(${ft.shape}$)
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+    INTEGER(KIND=JPIM)                           :: LBOUNDS(${ft.rank}$)
+
+  END SUBROUTINE ${ftn}$_GET_DEVICE_DATA
+
+#:if defined('WITH_FIAT')
+  INTEGER*8 FUNCTION ${ftn}$_CRC64 (SELF) RESULT (ICRC)
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER :: PTR(${ft.shape}$)
+    ${ft.type}$, ALLOCATABLE :: ZZ(${ft.shape}$)
+    INTEGER*8 :: ILEN
+    EXTERNAL :: CRC64
+    
+  END FUNCTION
+#:endif
+
+  SUBROUTINE ${ftn}$_OWNER_GET_DEVICE_DATA (SELF, MODE, PTR, QUEUE)
+    CLASS(${ftn}$_OWNER) :: SELF
+    INTEGER (KIND=JPIM),           INTENT(IN)    :: MODE
+    ${ft.type}$, POINTER,          INTENT(INOUT) :: PTR(${ft.shape}$)
+    INTEGER (KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_OWNER_GET_DEVICE_DATA
+
+  SUBROUTINE ${ftn}$_GET_DEVICE_DATA_RDONLY (SELF, PPTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER,         INTENT(INOUT) :: PPTR(${ft.shape}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_GET_DEVICE_DATA_RDONLY
+
+  SUBROUTINE ${ftn}$_GET_DEVICE_DATA_WRONLY (SELF, PPTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER,         INTENT(INOUT) :: PPTR(${ft.shape}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_GET_DEVICE_DATA_WRONLY
+
+  SUBROUTINE ${ftn}$_SYNC_DEVICE_RDONLY (SELF, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+    ${ft.type}$, POINTER                        :: ZPTR(${ft.shape}$)
+
+  END SUBROUTINE ${ftn}$_SYNC_DEVICE_RDONLY
+
+  SUBROUTINE ${ftn}$_GET_DEVICE_DATA_RDWR (SELF, PPTR, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    ${ft.type}$, POINTER,         INTENT(INOUT) :: PPTR(${ft.shape}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+
+  END SUBROUTINE ${ftn}$_GET_DEVICE_DATA_RDWR
+
+  SUBROUTINE ${ftn}$_SYNC_DEVICE_RDWR (SELF, QUEUE)
+    CLASS(${ftn}$) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN)    :: QUEUE
+    ${ft.type}$, POINTER                        :: ZPTR(${ft.shape}$)
+
+  END SUBROUTINE ${ftn}$_SYNC_DEVICE_RDWR
+
+  SUBROUTINE ${ftn}$_WRAPPER_GET_DIMS (SELF, LBOUNDS, UBOUNDS)
+    CLASS(${ftn}$_WRAPPER),       INTENT(IN) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(OUT) :: LBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(OUT) :: UBOUNDS(${ft.rank}$)
+  END SUBROUTINE ${ftn}$_WRAPPER_GET_DIMS
+
+  SUBROUTINE ${ftn}$_OWNER_GET_DIMS (SELF, LBOUNDS, UBOUNDS)
+    CLASS(${ftn}$_OWNER),         INTENT(IN) :: SELF
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(OUT) :: LBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(OUT) :: UBOUNDS(${ft.rank}$)
+  END SUBROUTINE ${ftn}$_OWNER_GET_DIMS
+
+  SUBROUTINE ${ftn}$_WRAPPER_RESIZE (SELF, UBOUNDS, LBOUNDS, PERSISTENT)
+
+    CLASS(${ftn}$_WRAPPER),       INTENT(IN) :: SELF
+    INTEGER(KIND=JPIM),           INTENT(IN) :: UBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN) :: LBOUNDS(${ft.rank}$)
+    LOGICAL, OPTIONAL,            INTENT(IN) :: PERSISTENT
+  END SUBROUTINE ${ftn}$_WRAPPER_RESIZE
+
+  SUBROUTINE ${ftn}$_OWNER_RESIZE (SELF, UBOUNDS, LBOUNDS, PERSISTENT)
+    CLASS(${ftn}$_OWNER),         INTENT(IN) :: SELF
+    INTEGER(KIND=JPIM),           INTENT(IN) :: UBOUNDS(${ft.rank}$)
+    INTEGER(KIND=JPIM), OPTIONAL, INTENT(IN) :: LBOUNDS(${ft.rank}$)
+    LOGICAL, OPTIONAL,            INTENT(IN) :: PERSISTENT
+
+  END SUBROUTINE ${ftn}$_OWNER_RESIZE
+
+#ifdef __PGI
+  SUBROUTINE ${ftn}$_SET_STATUS (SELF, KSTATUS)
+
+  CLASS (${ftn}$) :: SELF
+  INTEGER (KIND=JPIM), INTENT (IN) :: KSTATUS
+
+
+  END SUBROUTINE ${ftn}$_SET_STATUS
+#endif
+
+#:endfor
+
+END MODULE FIELD_${RANK}$${SUFF}$_MODULE
