@@ -1,0 +1,14 @@
+SUBROUTINE CHARARG (CDTYPE)
+
+IMPLICIT NONE
+
+CHARACTER (LEN=*), INTENT (IN) :: CDTYPE
+
+
+!$acc serial
+
+PRINT *, CDTYPE
+
+!$acc end serial
+
+END SUBROUTINE
