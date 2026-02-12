@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export MODULEPATH=/perm/sor/install/nvidia/hpc_sdk/modulefiles
+
+module load nvhpc-hpcx/25.7
+
 set -x
 set -e
 
