@@ -1,0 +1,5 @@
+MODULE A
+
+USE MPI_F08
+
+END 

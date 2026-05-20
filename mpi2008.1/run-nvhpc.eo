@@ -1,0 +1,14 @@
++ for f in a.F90 testmpi.F90
++ pgf90 -isystem /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.3/comm_libs/12.9/hpcx/hpcx-2.25.1/ompi/include -isystem /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.3/comm_libs/12.9/hpcx/hpcx-2.25.1/ompi/lib -c a.F90
++ for f in a.F90 testmpi.F90
++ pgf90 -isystem /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.3/comm_libs/12.9/hpcx/hpcx-2.25.1/ompi/include -isystem /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.3/comm_libs/12.9/hpcx/hpcx-2.25.1/ompi/lib -c testmpi.F90
+NVFORTRAN-S-0166-mpi_fortran_weights_empty cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_unweighted cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_statuses_ignore cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_status_ignore cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_errcodes_ignore cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_argvs_null cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_argv_null cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_in_place cannot be a common block and a subprogram (testmpi.F90)
+NVFORTRAN-S-0166-mpi_fortran_bottom cannot be a common block and a subprogram (testmpi.F90)
+  0 inform,   0 warnings,   9 severes, 0 fatal for sub
