@@ -1,0 +1,1 @@
++ mpiifort -c testmpi.F90
