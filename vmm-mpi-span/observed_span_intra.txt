@@ -1,0 +1,61 @@
+=== build
++ mpicc -O2 -I/perm/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/cuda/13.3/include vmm_span_mpi.c -o vmm_span_mpi -L/perm/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/cuda/13.3/lib64/stubs -lcuda
++ set +x
+=== versions on ac6-324 
+NVIDIA A100-SXM4-40GB, 595.71.05
+NVIDIA A100-SXM4-40GB, 595.71.05
+nvc 26.9-0 64-bit target on x86-64 Linux -tp znver2 
+mpirun (Open MPI) 5.0.10rc2
+# Library path: /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/lib/libucs.so.0
+module gdrdrv
+module nvidia_peermem
+=== reproducer 1a: MPI_Sendrecv_replace, 8 MiB buffer inside one physical allocation (reference)
+1 physical allocation(s) of 134217728 bytes; buffer of 8388608 bytes at base+66060288; driver range of the buffer: base+0, 268435456 bytes
+RESULT (1 allocation(s)): OK
+=== reproducer 1b: MPI_Sendrecv_replace, same 8 MiB buffer straddling two physical allocations
+2 physical allocation(s) of 67108864 bytes; buffer of 8388608 bytes at base+66060288; driver range of the buffer: base+0, 268435456 bytes
+[ac6-324:2214592:0:2214592] rc_verbs_iface.c:128  send completion with error: local protection error [qpn 0x1ab6d wrid 0x1 vendor_err 0x33]
+[ac6-324:2214592:0:2214592] rc_verbs_iface.c:128  [rqpn 0x1ab6e dlid=8 sl=0 port=1 src_path_bits=0]
+[ac6-324:2214593:0:2214593] rc_verbs_iface.c:128  send completion with error: local protection error [qpn 0x1ab6e wrid 0x1 vendor_err 0x33]
+[ac6-324:2214593:0:2214593] rc_verbs_iface.c:128  [rqpn 0x1ab6d dlid=8 sl=0 port=1 src_path_bits=0]
+[ac6-324:2214593] *** Process received signal ***
+[ac6-324:2214593] Signal: Aborted (6)
+[ac6-324:2214593] Signal code:  (-6)
+[ac6-324:2214592] *** Process received signal ***
+[ac6-324:2214592] Signal: Aborted (6)
+[ac6-324:2214592] Signal code:  (-6)
+[ac6-324:2214592] [ 0] [ac6-324:2214593] [ 0] /lib64/libpthread.so.0(+0x12990)[0x15144bd4c990]
+[ac6-324:2214593] [ 1] /lib64/libpthread.so.0(+0x12990)[0x148450a44990]
+[ac6-324:2214592] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x15144b2915af]
+[ac6-324:2214593] [ 2] /lib64/libc.so.6(gsignal+0x10f)[0x14844ff895af]
+[ac6-324:2214592] [ 2] /lib64/libc.so.6(abort+0x127)[0x14844ff5cee5]
+[ac6-324:2214592] [ 3] /lib64/libc.so.6(abort+0x127)[0x15144b264ee5]
+[ac6-324:2214593] [ 3] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucs.so.0(+0x62db5)[0x15144a637db5]
+[ac6-324:2214593] [ 4] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucs.so.0(+0x62db5)[0x14844f32fdb5]
+[ac6-324:2214592] [ 4] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucs.so.0(ucs_log_default_handler+0xf2e)[0x14844f335b9e]
+[ac6-324:2214592] [ 5] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucs.so.0(ucs_log_dispatch+0xcc)[0x14844f335f3c]
+[ac6-324:2214592] [ 6] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucs.so.0(ucs_log_default_handler+0xf2e)[0x15144a63db9e]
+[ac6-324:2214593] [ 5] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucs.so.0(ucs_log_dispatch+0xcc)[0x15144a63df3c]
+[ac6-324:2214593] [ 6] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/ucx/libuct_ib.so.0(+0x25b55)[0x1514480c5b55]
+[ac6-324:2214593] [ 7] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/ucx/libuct_ib.so.0(+0x25b55)[0x14844c14eb55]
+[ac6-324:2214592] [ 7] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/ucx/libuct_ib.so.0(+0x25fa5)[0x14844c14efa5]
+[ac6-324:2214592] [ 8] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucp.so.0(ucp_worker_progress+0x6a)[0x148457eaad9a]
+[ac6-324:2214592] [ 9] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/ucx/libuct_ib.so.0(+0x25fa5)[0x1514480c5fa5]
+[ac6-324:2214593] [ 8] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/mt/lib/libucp.so.0(ucp_worker_progress+0x6a)[0x1514531b2d9a]
+/etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ompi5/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_send+0x14d)[0x14844d5b6e5d]
+[ac6-324:2214592] [10] [ac6-324:2214593] [ 9] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ompi5/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_send+0x14d)[0x1514488bee5d]
+[ac6-324:2214593] [10] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ompi5/lib/libmpi.so.40(+0xb4f20)[0x148452116f20]
+[ac6-324:2214592] [11] ./vmm_span_mpi[0x401bf8]
+[ac6-324:2214592] [12] /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ompi5/lib/libmpi.so.40(+0xb4f20)[0x15144d41ef20]
+[ac6-324:2214593] [11] ./vmm_span_mpi[0x401bf8]
+[ac6-324:2214593] /lib64/libc.so.6(__libc_start_main+0xe5)[0x14844ff75865]
+[ac6-324:2214592] [13] ./vmm_span_mpi[0x40136e]
+[ac6-324:2214592] *** End of error message ***
+[12] /lib64/libc.so.6(__libc_start_main+0xe5)[0x15144b27d865]
+[ac6-324:2214593] [13] ./vmm_span_mpi[0x40136e]
+[ac6-324:2214593] *** End of error message ***
+--------------------------------------------------------------------------
+prterun noticed that process rank 1 with PID 2214593 on node ac6-324 exited on
+signal 6 (Aborted).
+--------------------------------------------------------------------------
+

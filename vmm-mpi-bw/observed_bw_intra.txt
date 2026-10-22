@@ -1,0 +1,24 @@
+=== build
++ mpicc -O2 -I/perm/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/cuda/13.3/include vmm_ipc_bw.c -o vmm_ipc_bw -L/perm/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/cuda/13.3/lib64/stubs -lcuda
++ set +x
+=== versions (intra) on ac6-324.bullx
+NVIDIA A100-SXM4-40GB, 595.71.05
+NVIDIA A100-SXM4-40GB, 595.71.05
+nvc 26.9-0 64-bit target on x86-64 Linux -tp znver2 
+mpirun (Open MPI) 5.0.10rc2
+# Library path: /etc/ecmwf/nfs/dh2_perm_b/sor/install/nvidia/hpc_sdk/Linux_x86_64/26.9/comm_libs/13.3/hpcx/hpcx-2.50/ucx/lib/libucs.so.0
+module gdrdrv
+module nvidia_peermem
+=== reproducer 2: intra-node bandwidth, VMM vs cuMemAlloc
+# bytes      vmm GB/s  cuMemAlloc GB/s  ratio
+      1024         0.15             0.15   0.94
+      4096         0.84             0.32   2.62
+     16384         2.68             1.28   2.10
+     65536         5.18             4.92   1.05
+    262144         8.78            16.44   0.53
+   1048576        26.83            43.02   0.62
+   4194304        55.57            73.03   0.76
+  16777216        67.93            87.51   0.78
+  67108864        77.56            92.27   0.84
+ 268435456        80.47            93.65   0.86
+
