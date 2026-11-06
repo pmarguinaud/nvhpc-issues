@@ -1,0 +1,131 @@
+[ECMWF-INFO -ecprofile] /usr/bin/bash NON_INTERACTIVE on ac6-300 at 20261106_211534.517, PID: 370713, JOBID: 36941979
+[ECMWF-INFO -ecprofile] $SCRATCH=/ec/res4/scratch/sor
+[ECMWF-INFO -ecprofile] $PERM=/perm/sor
+[ECMWF-INFO -ecprofile] $HPCPERM=/ec/res4/hpcperm/sor
+[ECMWF-INFO -ecprofile] $TMPDIR=/dev/shm/_tmpdir_.sor.36941979
+[ECMWF-INFO -ecprofile] $SCRATCHDIR=/ec/res4/scratchdir/sor/3/36941979
++ module load nvidia/24.5
+++ /usr/local/apps/lmod/8.6.8/libexec/lmod bash load nvidia/24.5
++ eval '__LMOD_REF_COUNT_CPATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd:1;' export '__LMOD_REF_COUNT_CPATH;' 'CPATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd;' export 'CPATH;' '__LMOD_REF_COUNT_CPLUS_INCLUDE_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd:1;' export '__LMOD_REF_COUNT_CPLUS_INCLUDE_PATH;' 'CPLUS_INCLUDE_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd;' export 'CPLUS_INCLUDE_PATH;' '__LMOD_REF_COUNT_C_INCLUDE_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd:1;' export '__LMOD_REF_COUNT_C_INCLUDE_PATH;' 'C_INCLUDE_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd;' export 'C_INCLUDE_PATH;' '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/lib64:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/cuda/12.4/lib64:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/lib64:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/lib:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/lib:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/lib64:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/cuda/12.4/lib64:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/lib64:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/lib:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/lib;' export 'LD_LIBRARY_PATH;' '__LMOD_REF_COUNT_LOADEDMODULES=gcc/8.5.0:1\;prgenv/gnu:1\;nvidia/24.5:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=gcc/8.5.0:prgenv/gnu:nvidia/24.5;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MANPATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/man:1\;/usr/local/apps/ecfs-client/versions/current/share/man:1\;/usr/local/apps/lmod/8.6.8/share/man:1;' export '__LMOD_REF_COUNT_MANPATH;' 'MANPATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/man:/usr/local/apps/ecfs-client/versions/current/share/man:/usr/local/apps/lmod/8.6.8/share/man::;' export 'MANPATH;' 'MODULEPATH=/usr/local/apps/modulefiles/lmod/prgenvs:/usr/local/apps/modulefiles/lmod/core:/usr/local/apps/modulefiles/lmod/compilers:/usr/local/apps/modulefiles/lmod/flavours/gnu/8.5;' export 'MODULEPATH;' 'NVHPC=/usr/local/apps/nvidia/24.5;' export 'NVHPC;' 'NVHPC_CUDA_HOME=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/cuda/12.4;' export 'NVHPC_CUDA_HOME;' 'NVHPC_ROOT=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5;' export 'NVHPC_ROOT;' 'NVIDIA_DIR=/usr/local/apps/nvidia/24.5;' export 'NVIDIA_DIR;' 'NVIDIA_VERSION=24.5;' export 'NVIDIA_VERSION;' '__LMOD_REF_COUNT_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/bin:1\;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/bin:1\;/home/sor/.opencode/bin:1\;/home/sor/install/cmake-3.28.2/bin:1\;/home/sor/fxtran/master/bin:1\;/home/sor/bin:2\;/home/sor/.local/bin:1\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/bin:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/bin:/home/sor/.opencode/bin:/home/sor/install/cmake-3.28.2/bin:/home/sor/fxtran/master/bin:/home/sor/bin:/home/sor/.local/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin;' export 'PATH;' '__LMOD_REF_COUNT__LMFILES_=/usr/local/apps/modulefiles/lmod/compilers/gcc/8.5.0.lua:1\;/usr/local/apps/modulefiles/lmod/prgenvs/prgenv/gnu.lua:1\;/usr/local/apps/modulefiles/lmod/compilers/nvidia/24.5.lua:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/usr/local/apps/modulefiles/lmod/compilers/gcc/8.5.0.lua:/usr/local/apps/modulefiles/lmod/prgenvs/prgenv/gnu.lua:/usr/local/apps/modulefiles/lmod/compilers/nvidia/24.5.lua;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IDcyMDAuMCwKY19zaG9ydFRpbWUgPSAwLjY0NzA5NzgyNjAwNDAzLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0gewpwcmdlbnZzID0gInByZ2VudiIsCn0sCm1UID0gewpnY2MgPSB7CmZuID0gIi91c3IvbG9jYWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL2NvbXBpbGVycy9nY2MvOC41LjAubHVhIiwKZnVsbE5hbWUgPSAiZ2NjLzguNS4wIiwKbG9hZE9yZGVyID0gMSwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJnY2MiLAp3ViA9ICJeMDAwMDAwMDguMDAwMDAwMDA1Lip6ZmluYWwiLAp9LApudmlkaWEgPSB7CmZuID0gIi91c3IvbG9j;' export '_ModuleTable001_;' '_ModuleTable002_=YWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL2NvbXBpbGVycy9udmlkaWEvMjQuNS5sdWEiLApmdWxsTmFtZSA9ICJudmlkaWEvMjQuNSIsCmxvYWRPcmRlciA9IDMsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAwLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAibnZpZGlhLzI0LjUiLAp3ViA9ICIwMDAwMDAwMjQuMDAwMDAwMDA1Lip6ZmluYWwiLAp9LApwcmdlbnYgPSB7CmZuID0gIi91c3IvbG9jYWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL3ByZ2VudnMvcHJnZW52L2dudS5sdWEiLApmdWxsTmFtZSA9ICJwcmdlbnYvZ251IiwKbG9hZE9yZGVyID0gMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJwcmdl;' export '_ModuleTable002_;' '_ModuleTable003_=bnYiLAp3ViA9ICJeZ251Lip6ZmluYWwiLAp9LAp9LAptcGF0aEEgPSB7CiIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9wcmdlbnZzIgosICIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9jb3JlIgosICIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9jb21waWxlcnMiLCAiL3Vzci9sb2NhbC9hcHBzL21vZHVsZWZpbGVzL2xtb2QvZmxhdm91cnMvZ251LzguNSIsCn0sCnN5c3RlbUJhc2VNUEFUSCA9ICIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9wcmdlbnZzOi91c3IvbG9jYWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL2NvcmU6L3Vzci9sb2NhbC9hcHBzL21vZHVsZWZpbGVzL2xtb2QvY29tcGlsZXJzIiwKfQo=;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;' 'nvidia_DIR=/usr/local/apps/nvidia/24.5;' export 'nvidia_DIR;' 'nvidia_VERSION=24.5;' export 'nvidia_VERSION;'
+++ __LMOD_REF_COUNT_CPATH='/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd:1'
+++ export __LMOD_REF_COUNT_CPATH
+++ CPATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd
+++ export CPATH
+++ __LMOD_REF_COUNT_CPLUS_INCLUDE_PATH='/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd:1'
+++ export __LMOD_REF_COUNT_CPLUS_INCLUDE_PATH
+++ CPLUS_INCLUDE_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd
+++ export CPLUS_INCLUDE_PATH
+++ __LMOD_REF_COUNT_C_INCLUDE_PATH='/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd:1'
+++ export __LMOD_REF_COUNT_C_INCLUDE_PATH
+++ C_INCLUDE_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/include:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/include/qd
+++ export C_INCLUDE_PATH
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH='/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/lib64:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/cuda/12.4/lib64:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/lib64:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/lib:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/lib:1'
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/comm_libs/nccl/lib64:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/cuda/12.4/lib64:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/math_libs/lib64:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/lib:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/lib
+++ export LD_LIBRARY_PATH
+++ __LMOD_REF_COUNT_LOADEDMODULES='gcc/8.5.0:1;prgenv/gnu:1;nvidia/24.5:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=gcc/8.5.0:prgenv/gnu:nvidia/24.5
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MANPATH='/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/man:1;/usr/local/apps/ecfs-client/versions/current/share/man:1;/usr/local/apps/lmod/8.6.8/share/man:1'
+++ export __LMOD_REF_COUNT_MANPATH
+++ MANPATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/man:/usr/local/apps/ecfs-client/versions/current/share/man:/usr/local/apps/lmod/8.6.8/share/man::
+++ export MANPATH
+++ MODULEPATH=/usr/local/apps/modulefiles/lmod/prgenvs:/usr/local/apps/modulefiles/lmod/core:/usr/local/apps/modulefiles/lmod/compilers:/usr/local/apps/modulefiles/lmod/flavours/gnu/8.5
+++ export MODULEPATH
+++ NVHPC=/usr/local/apps/nvidia/24.5
+++ export NVHPC
+++ NVHPC_CUDA_HOME=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/cuda/12.4
+++ export NVHPC_CUDA_HOME
+++ NVHPC_ROOT=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5
+++ export NVHPC_ROOT
+++ NVIDIA_DIR=/usr/local/apps/nvidia/24.5
+++ export NVIDIA_DIR
+++ NVIDIA_VERSION=24.5
+++ export NVIDIA_VERSION
+++ __LMOD_REF_COUNT_PATH='/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/bin:1;/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/bin:1;/home/sor/.opencode/bin:1;/home/sor/install/cmake-3.28.2/bin:1;/home/sor/fxtran/master/bin:1;/home/sor/bin:2;/home/sor/.local/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/extras/qd/bin:/usr/local/apps/nvidia/24.5/Linux_x86_64/24.5/compilers/bin:/home/sor/.opencode/bin:/home/sor/install/cmake-3.28.2/bin:/home/sor/fxtran/master/bin:/home/sor/bin:/home/sor/.local/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ export PATH
+++ __LMOD_REF_COUNT__LMFILES_='/usr/local/apps/modulefiles/lmod/compilers/gcc/8.5.0.lua:1;/usr/local/apps/modulefiles/lmod/prgenvs/prgenv/gnu.lua:1;/usr/local/apps/modulefiles/lmod/compilers/nvidia/24.5.lua:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/usr/local/apps/modulefiles/lmod/compilers/gcc/8.5.0.lua:/usr/local/apps/modulefiles/lmod/prgenvs/prgenv/gnu.lua:/usr/local/apps/modulefiles/lmod/compilers/nvidia/24.5.lua
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IDcyMDAuMCwKY19zaG9ydFRpbWUgPSAwLjY0NzA5NzgyNjAwNDAzLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0gewpwcmdlbnZzID0gInByZ2VudiIsCn0sCm1UID0gewpnY2MgPSB7CmZuID0gIi91c3IvbG9jYWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL2NvbXBpbGVycy9nY2MvOC41LjAubHVhIiwKZnVsbE5hbWUgPSAiZ2NjLzguNS4wIiwKbG9hZE9yZGVyID0gMSwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDEsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJnY2MiLAp3ViA9ICJeMDAwMDAwMDguMDAwMDAwMDA1Lip6ZmluYWwiLAp9LApudmlkaWEgPSB7CmZuID0gIi91c3IvbG9j
+++ export _ModuleTable001_
+++ _ModuleTable002_=YWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL2NvbXBpbGVycy9udmlkaWEvMjQuNS5sdWEiLApmdWxsTmFtZSA9ICJudmlkaWEvMjQuNSIsCmxvYWRPcmRlciA9IDMsCnByb3BUID0ge30sCnN0YWNrRGVwdGggPSAwLApzdGF0dXMgPSAiYWN0aXZlIiwKdXNlck5hbWUgPSAibnZpZGlhLzI0LjUiLAp3ViA9ICIwMDAwMDAwMjQuMDAwMDAwMDA1Lip6ZmluYWwiLAp9LApwcmdlbnYgPSB7CmZuID0gIi91c3IvbG9jYWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL3ByZ2VudnMvcHJnZW52L2dudS5sdWEiLApmdWxsTmFtZSA9ICJwcmdlbnYvZ251IiwKbG9hZE9yZGVyID0gMiwKcHJvcFQgPSB7fSwKc3RhY2tEZXB0aCA9IDAsCnN0YXR1cyA9ICJhY3RpdmUiLAp1c2VyTmFtZSA9ICJwcmdl
+++ export _ModuleTable002_
+++ _ModuleTable003_=bnYiLAp3ViA9ICJeZ251Lip6ZmluYWwiLAp9LAp9LAptcGF0aEEgPSB7CiIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9wcmdlbnZzIgosICIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9jb3JlIgosICIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9jb21waWxlcnMiLCAiL3Vzci9sb2NhbC9hcHBzL21vZHVsZWZpbGVzL2xtb2QvZmxhdm91cnMvZ251LzguNSIsCn0sCnN5c3RlbUJhc2VNUEFUSCA9ICIvdXNyL2xvY2FsL2FwcHMvbW9kdWxlZmlsZXMvbG1vZC9wcmdlbnZzOi91c3IvbG9jYWwvYXBwcy9tb2R1bGVmaWxlcy9sbW9kL2NvcmU6L3Vzci9sb2NhbC9hcHBzL21vZHVsZWZpbGVzL2xtb2QvY29tcGlsZXJzIiwKfQo=
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ nvidia_DIR=/usr/local/apps/nvidia/24.5
+++ export nvidia_DIR
+++ nvidia_VERSION=24.5
+++ export nvidia_VERSION
+++ : -s sh
++ eval
++ cd /home/sor/nvhpc-issues/trltog-view-pinned
++ nvfortran -O2 -acc=gpu -cuda -gpu=lineinfo -Minfo=accel -o master.x master.F90
+master:
+     76, Generating enter data create(zhost(:,:))
+     95, Generating enter data copyin(ydgp(:),preel_real(:),iflda(:),iin_to_send_bufr(:,:))
+     99, Generating enter data attach(ydgp%p)
+    111, Generating present(iin_to_send_bufr(:,:),iflda(:),ydgp(:),preel_real(:))
+         Generating NVIDIA GPU code
+        113, !$acc loop gang, vector(128) collapse(2) ! blockidx%x threadidx%x
+        114,   ! blockidx%x threadidx%x collapsed
+    129, Generating update self(zhost(:,:))
++ for mode in pinned device pageable
++ ./master.x pinned
+ MODE = pinned
+ acc_is_present (YDGP(1)%P) =   F
+ iteration  1 :      919.600 ms
+ iteration  2 :      920.908 ms
+ iteration  3 :      921.493 ms
+ check:   T  T
++ for mode in pinned device pageable
++ ./master.x device
+ MODE = device
+ acc_is_present (YDGP(1)%P) =   T
+ iteration  1 :        1.844 ms
+ iteration  2 :        1.780 ms
+ iteration  3 :        1.777 ms
+ check:   T  T
++ for mode in pinned device pageable
++ ./master.x pageable
+Failing in Thread:1
+Accelerator Fatal Error: call to cuStreamSynchronize returned error 700 (CUDA_ERROR_ILLEGAL_ADDRESS): Illegal address during kernel execution
+ File: /etc/ecmwf/nfs/dh1_home_b/sor/nvhpc-issues/trltog-view-pinned/master.F90
+ Function: master:15
+ Line: 111
+
+ MODE = pageable
+ acc_is_present (YDGP(1)%P) =   F
+[ECMWF-INFO -ecepilog] ----------------------------------------------------------------------------------------------------
+[ECMWF-INFO -ecepilog] This is the ECMWF job Epilogue
+[ECMWF-INFO -ecepilog] +++ Please report issues using the Support portal +++
+[ECMWF-INFO -ecepilog] +++ https://support.ecmwf.int                     +++
+[ECMWF-INFO -ecepilog] ----------------------------------------------------------------------------------------------------
+[ECMWF-INFO -ecepilog] Run at 2026-11-06T21:15:42 on ac
+[ECMWF-INFO -ecepilog] JobName                   : run.sh
+[ECMWF-INFO -ecepilog] JobID                     : 36941979
+[ECMWF-INFO -ecepilog] Submit                    : 2026-11-06T21:15:22
+[ECMWF-INFO -ecepilog] Start                     : 2026-11-06T21:15:32
+[ECMWF-INFO -ecepilog] End                       : 2026-11-06T21:15:42
+[ECMWF-INFO -ecepilog] QueuedTime                : 10.0
+[ECMWF-INFO -ecepilog] ElapsedRaw                : 10
+[ECMWF-INFO -ecepilog] ExitCode                  : 1:0
+[ECMWF-INFO -ecepilog] DerivedExitCode           : 0:0
+[ECMWF-INFO -ecepilog] State                     : FAILED
+[ECMWF-INFO -ecepilog] Account                   : frgmpmod
+[ECMWF-INFO -ecepilog] QOS                       : dg
+[ECMWF-INFO -ecepilog] User                      : sor
+[ECMWF-INFO -ecepilog] StdOut                    : /etc/ecmwf/nfs/dh1_home_b/sor/nvhpc-issues/trltog-view-pinned/run.eo
+[ECMWF-INFO -ecepilog] StdErr                    : /etc/ecmwf/nfs/dh1_home_b/sor/nvhpc-issues/trltog-view-pinned/run.eo
+[ECMWF-INFO -ecepilog] NNodes                    : 1
+[ECMWF-INFO -ecepilog] NCPUS                     : 2
+[ECMWF-INFO -ecepilog] SBU                       : 0.047
+[ECMWF-INFO -ecepilog] jobtag                    : sor-run.sh-1x2-/etc/ecmwf/nfs/dh1_home_b/sor/nvhpc-issues/trltog-view-pinned/run.eo
+[ECMWF-INFO -ecepilog] ----------------------------------------------------------------------------------------------------
+
